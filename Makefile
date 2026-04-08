@@ -12,6 +12,9 @@ wallet-api:
 clean:
 	rm wallet-api
 
+protoc:
+	sh ./bin/compile.sh
+
 test:
 	go test -v ./...
 
@@ -22,5 +25,6 @@ lint:
 .PHONY: \
 	wallet-api \
 	clean \
+	protoc \
 	test \
 	lint

@@ -5,7 +5,13 @@ http_server:
   host: 0.0.0.0
   port: 8188
 
-chains: [Ethereum, Solana, Polygon]
+chains:
+  - chain_name: "Bitcoin"
+    chain_id: "mainnet"
+    netword: mainnet
+  - chain_name: "Ethereum"
+    chain_id: "1"
+    netword: mainnet
 
 
 wallet_node:

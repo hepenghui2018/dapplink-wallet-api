@@ -36,9 +36,258 @@ message SupportChainResponse {
   repeated SupportChain chains = 3;
 }
 
+message PublicKey {
+  string public_key = 1;
+}
+
+message Addresses {
+   string address = 1;
+}
+
+message ConvertAddressesRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  string address_format = 4;
+  repeated PublicKey public_key = 5;
+}
+
+message ConvertAddressesResponse{
+  ReturnCode code = 1;
+  string msg = 2;
+  repeated Addresses address = 3;
+}
+
+message AddressesValid {
+  string address = 1;
+  bool valid = 2;
+}
+
+message ValidAddressesRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  repeated Addresses addresses = 4;
+}
+
+message ValidAddressesResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  repeated AddressesValid address_valid = 3;
+}
+
+message LastestBlockRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+}
+
+message LastestBlockResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  uint64 height = 3;
+  string hash = 4;
+}
+
+message FromAddress {
+  string address = 1;
+  string amount = 2;
+  string meta_data = 3;
+}
+
+message ToAddress {
+  string address = 1;
+  string amount = 2;
+  string meta_data = 3;
+}
+
+message TransactionList {
+  string tx_hash = 1;
+  string fee = 2;
+  uint32 status = 3;
+  repeated FromAddress from = 4;
+  repeated ToAddress to = 5;
+}
+
+message BlockRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  string hash_height = 4;
+  bool is_block_hash = 5;
+}
+
+message BlockResponse{
+  ReturnCode code = 1;
+  string msg = 2;
+  int64 height = 3;
+  string hash = 4;
+  repeated TransactionList transactions = 5;
+}
+
+message TransactionByHashRequest{
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  string hash = 4;
+}
+
+message TransactionByHashResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  TransactionList transaction = 3;
+}
+
+message TransactionByAddressRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  string address = 4;
+  string contract_address = 5;
+}
+
+message TransactionByAddressResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  repeated TransactionList transaction = 3;
+}
+
+message AccountBalanceRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  string address = 4;
+  string contract_address = 5;
+}
+
+message AccountBalanceResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  string network = 3;
+  string balance = 4;
+}
+
+message RawTransaction {
+  string raw_tx = 1;
+}
+
+message SendTransactionsRequest{
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  repeated RawTransaction raw_tx = 4;
+}
+
+message RawTransactionReturn {
+  string tx_hash = 1;
+  bool is_success = 2;
+  string message = 3;
+}
+
+message SendTransactionResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  repeated RawTransactionReturn txn_ret = 3;
+}
+
+message TransactionSchemaRequest{
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+}
+
+message TransactionSchemaResponse{
+  ReturnCode code = 1;
+  string msg = 2;
+  string schema = 3;
+}
+
+message Base64Transaction  {
+  string base64_tx = 1;
+}
+
+message UnsignedTransactionMessageHash {
+  string unsigned_tx = 1;
+}
+
+message UnSignTransactionRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  repeated Base64Transaction base64_txn = 4;
+}
+
+message UnSignTransactionResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  repeated UnsignedTransactionMessageHash unsigned_txn = 3;
+}
+
+message Base64TransactionWithSignature {
+  string base64_tx = 1;
+  string signature = 2;
+  string public_key = 3;
+}
+
+message SignedTxWithHash {
+  string signed_tx = 1;
+  string tx_hash = 2;
+  bool is_success = 3;
+}
+
+message SignedTransactionRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  repeated Base64TransactionWithSignature txn_with_signature = 4;
+}
+
+message SignedTransactionResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  repeated SignedTxWithHash signed_txn = 3;
+}
+
+message ApproveContractList {
+  string address = 1;
+}
+
+message AddressApproveListRequest {
+  string consumer_token = 1;
+  string chain_id = 2;
+  string network = 3;
+  string address = 4;
+}
+
+message AddressApproveListResponse {
+  ReturnCode code = 1;
+  string msg = 2;
+  repeated ApproveContractList contracts = 3;
+}
 
 service WalletApiGateWayService {
+  // 链的支持层面
   rpc getSupportChains(SupportChainRequest) returns (SupportChainResponse) {}
+
+  // 地址层面的
+  rpc convertAddresses(ConvertAddressesRequest) returns(ConvertAddressesResponse){}
+  rpc validAddresses(ValidAddressesRequest) returns(ValidAddressesResponse){}
+
+  // 获取数据
+  rpc getLastestBlock(LastestBlockRequest) returns (LastestBlockResponse) {}
+  rpc getBlock(BlockRequest) returns (BlockResponse) {}
+  rpc getTransactionByHash (TransactionByHashRequest) returns (TransactionByHashResponse) {}
+  rpc getTransactionByAddress (TransactionByAddressRequest) returns (TransactionByAddressResponse) {}
+  rpc getAccountBalance(AccountBalanceRequest) returns (AccountBalanceResponse) {}
+
+  // 构建发送交易
+  rpc sendTransaction(SendTransactionsRequest) returns (SendTransactionResponse) {}
+  rpc buildTransactionSchema(TransactionSchemaRequest)returns(TransactionSchemaResponse){}
+  rpc buildUnSignTransaction(UnSignTransactionRequest) returns(UnSignTransactionResponse){}
+  rpc buildSignedTransaction(SignedTransactionRequest) returns(SignedTransactionResponse){}
+
+  // Web3 钱包扩展
+  rpc getAddressApproveList(AddressApproveListRequest) returns(AddressApproveListResponse){}
 }
 
 

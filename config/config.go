@@ -20,10 +20,12 @@ type Node struct {
 	DataApiUrl   string `yaml:"data_api_url"`
 	DataApiKey   string `yaml:"data_api_key"`
 	DataApiToken string `yaml:"data_api_token"`
+	TpApiUrl     string `yaml:"tp_api_url"`
 	TimeOut      uint64 `yaml:"time_out"`
 }
 
 type WalletNode struct {
+	Btc     Node `yaml:"btc"`
 	Eth     Node `yaml:"eth"`
 	Arbi    Node `yaml:"arbi"`
 	Op      Node `yaml:"op"`
@@ -32,12 +34,18 @@ type WalletNode struct {
 	Polygon Node `yaml:"polygon"`
 }
 
+type Chain struct {
+	ChainName string `yaml:"chain_name"`
+	ChainId   string `yaml:"chain_id"`
+	Network   string `yaml:"network"`
+}
+
 type Config struct {
 	RpcServer      Server     `yaml:"rpc_server"`
 	HttpServer     Server     `yaml:"http_server"`
 	WalletNode     WalletNode `yaml:"wallet_node"`
 	NetWork        string     `yaml:"network"`
-	Chains         []string   `yaml:"chains"`
+	Chains         []Chain    `yaml:"chains"`
 	EnableApiCache bool       `yaml:"enable_api_cache"`
 }
 

@@ -338,6 +338,2282 @@ func (x *SupportChainResponse) GetChains() []*SupportChain {
 	return nil
 }
 
+type PublicKey struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PublicKey     string                 `protobuf:"bytes,1,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PublicKey) Reset() {
+	*x = PublicKey{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PublicKey) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PublicKey) ProtoMessage() {}
+
+func (x *PublicKey) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PublicKey.ProtoReflect.Descriptor instead.
+func (*PublicKey) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *PublicKey) GetPublicKey() string {
+	if x != nil {
+		return x.PublicKey
+	}
+	return ""
+}
+
+type Addresses struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Address       string                 `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Addresses) Reset() {
+	*x = Addresses{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Addresses) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Addresses) ProtoMessage() {}
+
+func (x *Addresses) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Addresses.ProtoReflect.Descriptor instead.
+func (*Addresses) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Addresses) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+type ConvertAddressesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	AddressFormat string                 `protobuf:"bytes,4,opt,name=address_format,json=addressFormat,proto3" json:"address_format,omitempty"`
+	PublicKey     []*PublicKey           `protobuf:"bytes,5,rep,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConvertAddressesRequest) Reset() {
+	*x = ConvertAddressesRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConvertAddressesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConvertAddressesRequest) ProtoMessage() {}
+
+func (x *ConvertAddressesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConvertAddressesRequest.ProtoReflect.Descriptor instead.
+func (*ConvertAddressesRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ConvertAddressesRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *ConvertAddressesRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *ConvertAddressesRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *ConvertAddressesRequest) GetAddressFormat() string {
+	if x != nil {
+		return x.AddressFormat
+	}
+	return ""
+}
+
+func (x *ConvertAddressesRequest) GetPublicKey() []*PublicKey {
+	if x != nil {
+		return x.PublicKey
+	}
+	return nil
+}
+
+type ConvertAddressesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Address       []*Addresses           `protobuf:"bytes,3,rep,name=address,proto3" json:"address,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConvertAddressesResponse) Reset() {
+	*x = ConvertAddressesResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConvertAddressesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConvertAddressesResponse) ProtoMessage() {}
+
+func (x *ConvertAddressesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConvertAddressesResponse.ProtoReflect.Descriptor instead.
+func (*ConvertAddressesResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ConvertAddressesResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *ConvertAddressesResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *ConvertAddressesResponse) GetAddress() []*Addresses {
+	if x != nil {
+		return x.Address
+	}
+	return nil
+}
+
+type AddressesValid struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Address       string                 `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Valid         bool                   `protobuf:"varint,2,opt,name=valid,proto3" json:"valid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddressesValid) Reset() {
+	*x = AddressesValid{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddressesValid) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddressesValid) ProtoMessage() {}
+
+func (x *AddressesValid) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddressesValid.ProtoReflect.Descriptor instead.
+func (*AddressesValid) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *AddressesValid) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *AddressesValid) GetValid() bool {
+	if x != nil {
+		return x.Valid
+	}
+	return false
+}
+
+type ValidAddressesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	Addresses     []*Addresses           `protobuf:"bytes,4,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ValidAddressesRequest) Reset() {
+	*x = ValidAddressesRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ValidAddressesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValidAddressesRequest) ProtoMessage() {}
+
+func (x *ValidAddressesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValidAddressesRequest.ProtoReflect.Descriptor instead.
+func (*ValidAddressesRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ValidAddressesRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *ValidAddressesRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *ValidAddressesRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *ValidAddressesRequest) GetAddresses() []*Addresses {
+	if x != nil {
+		return x.Addresses
+	}
+	return nil
+}
+
+type ValidAddressesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	AddressValid  []*AddressesValid      `protobuf:"bytes,3,rep,name=address_valid,json=addressValid,proto3" json:"address_valid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ValidAddressesResponse) Reset() {
+	*x = ValidAddressesResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ValidAddressesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ValidAddressesResponse) ProtoMessage() {}
+
+func (x *ValidAddressesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ValidAddressesResponse.ProtoReflect.Descriptor instead.
+func (*ValidAddressesResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ValidAddressesResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *ValidAddressesResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *ValidAddressesResponse) GetAddressValid() []*AddressesValid {
+	if x != nil {
+		return x.AddressValid
+	}
+	return nil
+}
+
+type LastestBlockRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LastestBlockRequest) Reset() {
+	*x = LastestBlockRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LastestBlockRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LastestBlockRequest) ProtoMessage() {}
+
+func (x *LastestBlockRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LastestBlockRequest.ProtoReflect.Descriptor instead.
+func (*LastestBlockRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *LastestBlockRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *LastestBlockRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *LastestBlockRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+type LastestBlockResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Height        uint64                 `protobuf:"varint,3,opt,name=height,proto3" json:"height,omitempty"`
+	Hash          string                 `protobuf:"bytes,4,opt,name=hash,proto3" json:"hash,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LastestBlockResponse) Reset() {
+	*x = LastestBlockResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LastestBlockResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LastestBlockResponse) ProtoMessage() {}
+
+func (x *LastestBlockResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LastestBlockResponse.ProtoReflect.Descriptor instead.
+func (*LastestBlockResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *LastestBlockResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *LastestBlockResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *LastestBlockResponse) GetHeight() uint64 {
+	if x != nil {
+		return x.Height
+	}
+	return 0
+}
+
+func (x *LastestBlockResponse) GetHash() string {
+	if x != nil {
+		return x.Hash
+	}
+	return ""
+}
+
+type FromAddress struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Address       string                 `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Amount        string                 `protobuf:"bytes,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	MetaData      string                 `protobuf:"bytes,3,opt,name=meta_data,json=metaData,proto3" json:"meta_data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FromAddress) Reset() {
+	*x = FromAddress{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FromAddress) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FromAddress) ProtoMessage() {}
+
+func (x *FromAddress) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FromAddress.ProtoReflect.Descriptor instead.
+func (*FromAddress) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *FromAddress) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *FromAddress) GetAmount() string {
+	if x != nil {
+		return x.Amount
+	}
+	return ""
+}
+
+func (x *FromAddress) GetMetaData() string {
+	if x != nil {
+		return x.MetaData
+	}
+	return ""
+}
+
+type ToAddress struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Address       string                 `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Amount        string                 `protobuf:"bytes,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	MetaData      string                 `protobuf:"bytes,3,opt,name=meta_data,json=metaData,proto3" json:"meta_data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ToAddress) Reset() {
+	*x = ToAddress{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ToAddress) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ToAddress) ProtoMessage() {}
+
+func (x *ToAddress) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ToAddress.ProtoReflect.Descriptor instead.
+func (*ToAddress) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ToAddress) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *ToAddress) GetAmount() string {
+	if x != nil {
+		return x.Amount
+	}
+	return ""
+}
+
+func (x *ToAddress) GetMetaData() string {
+	if x != nil {
+		return x.MetaData
+	}
+	return ""
+}
+
+type TransactionList struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TxHash        string                 `protobuf:"bytes,1,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
+	Fee           string                 `protobuf:"bytes,2,opt,name=fee,proto3" json:"fee,omitempty"`
+	Status        uint32                 `protobuf:"varint,3,opt,name=status,proto3" json:"status,omitempty"`
+	From          []*FromAddress         `protobuf:"bytes,4,rep,name=from,proto3" json:"from,omitempty"`
+	To            []*ToAddress           `protobuf:"bytes,5,rep,name=to,proto3" json:"to,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TransactionList) Reset() {
+	*x = TransactionList{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransactionList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransactionList) ProtoMessage() {}
+
+func (x *TransactionList) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransactionList.ProtoReflect.Descriptor instead.
+func (*TransactionList) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *TransactionList) GetTxHash() string {
+	if x != nil {
+		return x.TxHash
+	}
+	return ""
+}
+
+func (x *TransactionList) GetFee() string {
+	if x != nil {
+		return x.Fee
+	}
+	return ""
+}
+
+func (x *TransactionList) GetStatus() uint32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *TransactionList) GetFrom() []*FromAddress {
+	if x != nil {
+		return x.From
+	}
+	return nil
+}
+
+func (x *TransactionList) GetTo() []*ToAddress {
+	if x != nil {
+		return x.To
+	}
+	return nil
+}
+
+type BlockRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	HashHeight    string                 `protobuf:"bytes,4,opt,name=hash_height,json=hashHeight,proto3" json:"hash_height,omitempty"`
+	IsBlockHash   bool                   `protobuf:"varint,5,opt,name=is_block_hash,json=isBlockHash,proto3" json:"is_block_hash,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BlockRequest) Reset() {
+	*x = BlockRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BlockRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BlockRequest) ProtoMessage() {}
+
+func (x *BlockRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BlockRequest.ProtoReflect.Descriptor instead.
+func (*BlockRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *BlockRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *BlockRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *BlockRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *BlockRequest) GetHashHeight() string {
+	if x != nil {
+		return x.HashHeight
+	}
+	return ""
+}
+
+func (x *BlockRequest) GetIsBlockHash() bool {
+	if x != nil {
+		return x.IsBlockHash
+	}
+	return false
+}
+
+type BlockResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Height        int64                  `protobuf:"varint,3,opt,name=height,proto3" json:"height,omitempty"`
+	Hash          string                 `protobuf:"bytes,4,opt,name=hash,proto3" json:"hash,omitempty"`
+	Transactions  []*TransactionList     `protobuf:"bytes,5,rep,name=transactions,proto3" json:"transactions,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BlockResponse) Reset() {
+	*x = BlockResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BlockResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BlockResponse) ProtoMessage() {}
+
+func (x *BlockResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BlockResponse.ProtoReflect.Descriptor instead.
+func (*BlockResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *BlockResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *BlockResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *BlockResponse) GetHeight() int64 {
+	if x != nil {
+		return x.Height
+	}
+	return 0
+}
+
+func (x *BlockResponse) GetHash() string {
+	if x != nil {
+		return x.Hash
+	}
+	return ""
+}
+
+func (x *BlockResponse) GetTransactions() []*TransactionList {
+	if x != nil {
+		return x.Transactions
+	}
+	return nil
+}
+
+type TransactionByHashRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	Hash          string                 `protobuf:"bytes,4,opt,name=hash,proto3" json:"hash,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TransactionByHashRequest) Reset() {
+	*x = TransactionByHashRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransactionByHashRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransactionByHashRequest) ProtoMessage() {}
+
+func (x *TransactionByHashRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransactionByHashRequest.ProtoReflect.Descriptor instead.
+func (*TransactionByHashRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *TransactionByHashRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *TransactionByHashRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *TransactionByHashRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *TransactionByHashRequest) GetHash() string {
+	if x != nil {
+		return x.Hash
+	}
+	return ""
+}
+
+type TransactionByHashResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Transaction   *TransactionList       `protobuf:"bytes,3,opt,name=transaction,proto3" json:"transaction,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TransactionByHashResponse) Reset() {
+	*x = TransactionByHashResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransactionByHashResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransactionByHashResponse) ProtoMessage() {}
+
+func (x *TransactionByHashResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransactionByHashResponse.ProtoReflect.Descriptor instead.
+func (*TransactionByHashResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *TransactionByHashResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *TransactionByHashResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *TransactionByHashResponse) GetTransaction() *TransactionList {
+	if x != nil {
+		return x.Transaction
+	}
+	return nil
+}
+
+type TransactionByAddressRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken   string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId         string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network         string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	Address         string                 `protobuf:"bytes,4,opt,name=address,proto3" json:"address,omitempty"`
+	ContractAddress string                 `protobuf:"bytes,5,opt,name=contract_address,json=contractAddress,proto3" json:"contract_address,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *TransactionByAddressRequest) Reset() {
+	*x = TransactionByAddressRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransactionByAddressRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransactionByAddressRequest) ProtoMessage() {}
+
+func (x *TransactionByAddressRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransactionByAddressRequest.ProtoReflect.Descriptor instead.
+func (*TransactionByAddressRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *TransactionByAddressRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *TransactionByAddressRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *TransactionByAddressRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *TransactionByAddressRequest) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *TransactionByAddressRequest) GetContractAddress() string {
+	if x != nil {
+		return x.ContractAddress
+	}
+	return ""
+}
+
+type TransactionByAddressResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Transaction   []*TransactionList     `protobuf:"bytes,3,rep,name=transaction,proto3" json:"transaction,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TransactionByAddressResponse) Reset() {
+	*x = TransactionByAddressResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransactionByAddressResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransactionByAddressResponse) ProtoMessage() {}
+
+func (x *TransactionByAddressResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransactionByAddressResponse.ProtoReflect.Descriptor instead.
+func (*TransactionByAddressResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *TransactionByAddressResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *TransactionByAddressResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *TransactionByAddressResponse) GetTransaction() []*TransactionList {
+	if x != nil {
+		return x.Transaction
+	}
+	return nil
+}
+
+type AccountBalanceRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken   string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId         string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network         string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	Address         string                 `protobuf:"bytes,4,opt,name=address,proto3" json:"address,omitempty"`
+	ContractAddress string                 `protobuf:"bytes,5,opt,name=contract_address,json=contractAddress,proto3" json:"contract_address,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *AccountBalanceRequest) Reset() {
+	*x = AccountBalanceRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AccountBalanceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AccountBalanceRequest) ProtoMessage() {}
+
+func (x *AccountBalanceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AccountBalanceRequest.ProtoReflect.Descriptor instead.
+func (*AccountBalanceRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *AccountBalanceRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *AccountBalanceRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *AccountBalanceRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *AccountBalanceRequest) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *AccountBalanceRequest) GetContractAddress() string {
+	if x != nil {
+		return x.ContractAddress
+	}
+	return ""
+}
+
+type AccountBalanceResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	Balance       string                 `protobuf:"bytes,4,opt,name=balance,proto3" json:"balance,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AccountBalanceResponse) Reset() {
+	*x = AccountBalanceResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AccountBalanceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AccountBalanceResponse) ProtoMessage() {}
+
+func (x *AccountBalanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AccountBalanceResponse.ProtoReflect.Descriptor instead.
+func (*AccountBalanceResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *AccountBalanceResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *AccountBalanceResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *AccountBalanceResponse) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *AccountBalanceResponse) GetBalance() string {
+	if x != nil {
+		return x.Balance
+	}
+	return ""
+}
+
+type RawTransaction struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RawTx         string                 `protobuf:"bytes,1,opt,name=raw_tx,json=rawTx,proto3" json:"raw_tx,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RawTransaction) Reset() {
+	*x = RawTransaction{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RawTransaction) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RawTransaction) ProtoMessage() {}
+
+func (x *RawTransaction) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RawTransaction.ProtoReflect.Descriptor instead.
+func (*RawTransaction) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *RawTransaction) GetRawTx() string {
+	if x != nil {
+		return x.RawTx
+	}
+	return ""
+}
+
+type SendTransactionsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	RawTx         []*RawTransaction      `protobuf:"bytes,4,rep,name=raw_tx,json=rawTx,proto3" json:"raw_tx,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SendTransactionsRequest) Reset() {
+	*x = SendTransactionsRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SendTransactionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendTransactionsRequest) ProtoMessage() {}
+
+func (x *SendTransactionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendTransactionsRequest.ProtoReflect.Descriptor instead.
+func (*SendTransactionsRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *SendTransactionsRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *SendTransactionsRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *SendTransactionsRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *SendTransactionsRequest) GetRawTx() []*RawTransaction {
+	if x != nil {
+		return x.RawTx
+	}
+	return nil
+}
+
+type RawTransactionReturn struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TxHash        string                 `protobuf:"bytes,1,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
+	IsSuccess     bool                   `protobuf:"varint,2,opt,name=is_success,json=isSuccess,proto3" json:"is_success,omitempty"`
+	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RawTransactionReturn) Reset() {
+	*x = RawTransactionReturn{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RawTransactionReturn) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RawTransactionReturn) ProtoMessage() {}
+
+func (x *RawTransactionReturn) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RawTransactionReturn.ProtoReflect.Descriptor instead.
+func (*RawTransactionReturn) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *RawTransactionReturn) GetTxHash() string {
+	if x != nil {
+		return x.TxHash
+	}
+	return ""
+}
+
+func (x *RawTransactionReturn) GetIsSuccess() bool {
+	if x != nil {
+		return x.IsSuccess
+	}
+	return false
+}
+
+func (x *RawTransactionReturn) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+type SendTransactionResponse struct {
+	state         protoimpl.MessageState  `protogen:"open.v1"`
+	Code          ReturnCode              `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                  `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	TxnRet        []*RawTransactionReturn `protobuf:"bytes,3,rep,name=txn_ret,json=txnRet,proto3" json:"txn_ret,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SendTransactionResponse) Reset() {
+	*x = SendTransactionResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SendTransactionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendTransactionResponse) ProtoMessage() {}
+
+func (x *SendTransactionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendTransactionResponse.ProtoReflect.Descriptor instead.
+func (*SendTransactionResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *SendTransactionResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *SendTransactionResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *SendTransactionResponse) GetTxnRet() []*RawTransactionReturn {
+	if x != nil {
+		return x.TxnRet
+	}
+	return nil
+}
+
+type TransactionSchemaRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TransactionSchemaRequest) Reset() {
+	*x = TransactionSchemaRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransactionSchemaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransactionSchemaRequest) ProtoMessage() {}
+
+func (x *TransactionSchemaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransactionSchemaRequest.ProtoReflect.Descriptor instead.
+func (*TransactionSchemaRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *TransactionSchemaRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *TransactionSchemaRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *TransactionSchemaRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+type TransactionSchemaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Schema        string                 `protobuf:"bytes,3,opt,name=schema,proto3" json:"schema,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TransactionSchemaResponse) Reset() {
+	*x = TransactionSchemaResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TransactionSchemaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TransactionSchemaResponse) ProtoMessage() {}
+
+func (x *TransactionSchemaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TransactionSchemaResponse.ProtoReflect.Descriptor instead.
+func (*TransactionSchemaResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *TransactionSchemaResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *TransactionSchemaResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *TransactionSchemaResponse) GetSchema() string {
+	if x != nil {
+		return x.Schema
+	}
+	return ""
+}
+
+type Base64Transaction struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Base64Tx      string                 `protobuf:"bytes,1,opt,name=base64_tx,json=base64Tx,proto3" json:"base64_tx,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Base64Transaction) Reset() {
+	*x = Base64Transaction{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Base64Transaction) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Base64Transaction) ProtoMessage() {}
+
+func (x *Base64Transaction) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Base64Transaction.ProtoReflect.Descriptor instead.
+func (*Base64Transaction) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *Base64Transaction) GetBase64Tx() string {
+	if x != nil {
+		return x.Base64Tx
+	}
+	return ""
+}
+
+type UnsignedTransactionMessageHash struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UnsignedTx    string                 `protobuf:"bytes,1,opt,name=unsigned_tx,json=unsignedTx,proto3" json:"unsigned_tx,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnsignedTransactionMessageHash) Reset() {
+	*x = UnsignedTransactionMessageHash{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnsignedTransactionMessageHash) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnsignedTransactionMessageHash) ProtoMessage() {}
+
+func (x *UnsignedTransactionMessageHash) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnsignedTransactionMessageHash.ProtoReflect.Descriptor instead.
+func (*UnsignedTransactionMessageHash) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *UnsignedTransactionMessageHash) GetUnsignedTx() string {
+	if x != nil {
+		return x.UnsignedTx
+	}
+	return ""
+}
+
+type UnSignTransactionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	Base64Txn     []*Base64Transaction   `protobuf:"bytes,4,rep,name=base64_txn,json=base64Txn,proto3" json:"base64_txn,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnSignTransactionRequest) Reset() {
+	*x = UnSignTransactionRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnSignTransactionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnSignTransactionRequest) ProtoMessage() {}
+
+func (x *UnSignTransactionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnSignTransactionRequest.ProtoReflect.Descriptor instead.
+func (*UnSignTransactionRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *UnSignTransactionRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *UnSignTransactionRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *UnSignTransactionRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *UnSignTransactionRequest) GetBase64Txn() []*Base64Transaction {
+	if x != nil {
+		return x.Base64Txn
+	}
+	return nil
+}
+
+type UnSignTransactionResponse struct {
+	state         protoimpl.MessageState            `protogen:"open.v1"`
+	Code          ReturnCode                        `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                            `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	UnsignedTxn   []*UnsignedTransactionMessageHash `protobuf:"bytes,3,rep,name=unsigned_txn,json=unsignedTxn,proto3" json:"unsigned_txn,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnSignTransactionResponse) Reset() {
+	*x = UnSignTransactionResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnSignTransactionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnSignTransactionResponse) ProtoMessage() {}
+
+func (x *UnSignTransactionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnSignTransactionResponse.ProtoReflect.Descriptor instead.
+func (*UnSignTransactionResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *UnSignTransactionResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *UnSignTransactionResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *UnSignTransactionResponse) GetUnsignedTxn() []*UnsignedTransactionMessageHash {
+	if x != nil {
+		return x.UnsignedTxn
+	}
+	return nil
+}
+
+type Base64TransactionWithSignature struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Base64Tx      string                 `protobuf:"bytes,1,opt,name=base64_tx,json=base64Tx,proto3" json:"base64_tx,omitempty"`
+	Signature     string                 `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
+	PublicKey     string                 `protobuf:"bytes,3,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Base64TransactionWithSignature) Reset() {
+	*x = Base64TransactionWithSignature{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Base64TransactionWithSignature) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Base64TransactionWithSignature) ProtoMessage() {}
+
+func (x *Base64TransactionWithSignature) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Base64TransactionWithSignature.ProtoReflect.Descriptor instead.
+func (*Base64TransactionWithSignature) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *Base64TransactionWithSignature) GetBase64Tx() string {
+	if x != nil {
+		return x.Base64Tx
+	}
+	return ""
+}
+
+func (x *Base64TransactionWithSignature) GetSignature() string {
+	if x != nil {
+		return x.Signature
+	}
+	return ""
+}
+
+func (x *Base64TransactionWithSignature) GetPublicKey() string {
+	if x != nil {
+		return x.PublicKey
+	}
+	return ""
+}
+
+type SignedTxWithHash struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SignedTx      string                 `protobuf:"bytes,1,opt,name=signed_tx,json=signedTx,proto3" json:"signed_tx,omitempty"`
+	TxHash        string                 `protobuf:"bytes,2,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
+	IsSuccess     bool                   `protobuf:"varint,3,opt,name=is_success,json=isSuccess,proto3" json:"is_success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignedTxWithHash) Reset() {
+	*x = SignedTxWithHash{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignedTxWithHash) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignedTxWithHash) ProtoMessage() {}
+
+func (x *SignedTxWithHash) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignedTxWithHash.ProtoReflect.Descriptor instead.
+func (*SignedTxWithHash) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *SignedTxWithHash) GetSignedTx() string {
+	if x != nil {
+		return x.SignedTx
+	}
+	return ""
+}
+
+func (x *SignedTxWithHash) GetTxHash() string {
+	if x != nil {
+		return x.TxHash
+	}
+	return ""
+}
+
+func (x *SignedTxWithHash) GetIsSuccess() bool {
+	if x != nil {
+		return x.IsSuccess
+	}
+	return false
+}
+
+type SignedTransactionRequest struct {
+	state            protoimpl.MessageState            `protogen:"open.v1"`
+	ConsumerToken    string                            `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId          string                            `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network          string                            `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	TxnWithSignature []*Base64TransactionWithSignature `protobuf:"bytes,4,rep,name=txn_with_signature,json=txnWithSignature,proto3" json:"txn_with_signature,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *SignedTransactionRequest) Reset() {
+	*x = SignedTransactionRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignedTransactionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignedTransactionRequest) ProtoMessage() {}
+
+func (x *SignedTransactionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignedTransactionRequest.ProtoReflect.Descriptor instead.
+func (*SignedTransactionRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *SignedTransactionRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *SignedTransactionRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *SignedTransactionRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *SignedTransactionRequest) GetTxnWithSignature() []*Base64TransactionWithSignature {
+	if x != nil {
+		return x.TxnWithSignature
+	}
+	return nil
+}
+
+type SignedTransactionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	SignedTxn     []*SignedTxWithHash    `protobuf:"bytes,3,rep,name=signed_txn,json=signedTxn,proto3" json:"signed_txn,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignedTransactionResponse) Reset() {
+	*x = SignedTransactionResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignedTransactionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignedTransactionResponse) ProtoMessage() {}
+
+func (x *SignedTransactionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignedTransactionResponse.ProtoReflect.Descriptor instead.
+func (*SignedTransactionResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *SignedTransactionResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *SignedTransactionResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *SignedTransactionResponse) GetSignedTxn() []*SignedTxWithHash {
+	if x != nil {
+		return x.SignedTxn
+	}
+	return nil
+}
+
+type ApproveContractList struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Address       string                 `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ApproveContractList) Reset() {
+	*x = ApproveContractList{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ApproveContractList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ApproveContractList) ProtoMessage() {}
+
+func (x *ApproveContractList) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ApproveContractList.ProtoReflect.Descriptor instead.
+func (*ApproveContractList) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *ApproveContractList) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+type AddressApproveListRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ConsumerToken string                 `protobuf:"bytes,1,opt,name=consumer_token,json=consumerToken,proto3" json:"consumer_token,omitempty"`
+	ChainId       string                 `protobuf:"bytes,2,opt,name=chain_id,json=chainId,proto3" json:"chain_id,omitempty"`
+	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
+	Address       string                 `protobuf:"bytes,4,opt,name=address,proto3" json:"address,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddressApproveListRequest) Reset() {
+	*x = AddressApproveListRequest{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddressApproveListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddressApproveListRequest) ProtoMessage() {}
+
+func (x *AddressApproveListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddressApproveListRequest.ProtoReflect.Descriptor instead.
+func (*AddressApproveListRequest) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *AddressApproveListRequest) GetConsumerToken() string {
+	if x != nil {
+		return x.ConsumerToken
+	}
+	return ""
+}
+
+func (x *AddressApproveListRequest) GetChainId() string {
+	if x != nil {
+		return x.ChainId
+	}
+	return ""
+}
+
+func (x *AddressApproveListRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *AddressApproveListRequest) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+type AddressApproveListResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
+	Contracts     []*ApproveContractList `protobuf:"bytes,3,rep,name=contracts,proto3" json:"contracts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddressApproveListResponse) Reset() {
+	*x = AddressApproveListResponse{}
+	mi := &file_protobuf_wallet_api_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddressApproveListResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddressApproveListResponse) ProtoMessage() {}
+
+func (x *AddressApproveListResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_protobuf_wallet_api_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddressApproveListResponse.ProtoReflect.Descriptor instead.
+func (*AddressApproveListResponse) Descriptor() ([]byte, []int) {
+	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *AddressApproveListResponse) GetCode() ReturnCode {
+	if x != nil {
+		return x.Code
+	}
+	return ReturnCode_SUCCESS
+}
+
+func (x *AddressApproveListResponse) GetMsg() string {
+	if x != nil {
+		return x.Msg
+	}
+	return ""
+}
+
+func (x *AddressApproveListResponse) GetContracts() []*ApproveContractList {
+	if x != nil {
+		return x.Contracts
+	}
+	return nil
+}
+
 var File_protobuf_wallet_api_proto protoreflect.FileDescriptor
 
 const file_protobuf_wallet_api_proto_rawDesc = "" +
@@ -356,7 +2632,175 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\x14SupportChainResponse\x12\x1f\n" +
 	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12%\n" +
-	"\x06chains\x18\x03 \x03(\v2\r.SupportChainR\x06chains*$\n" +
+	"\x06chains\x18\x03 \x03(\v2\r.SupportChainR\x06chains\"*\n" +
+	"\tPublicKey\x12\x1d\n" +
+	"\n" +
+	"public_key\x18\x01 \x01(\tR\tpublicKey\"%\n" +
+	"\tAddresses\x12\x18\n" +
+	"\aaddress\x18\x01 \x01(\tR\aaddress\"\xc7\x01\n" +
+	"\x17ConvertAddressesRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12%\n" +
+	"\x0eaddress_format\x18\x04 \x01(\tR\raddressFormat\x12)\n" +
+	"\n" +
+	"public_key\x18\x05 \x03(\v2\n" +
+	".PublicKeyR\tpublicKey\"s\n" +
+	"\x18ConvertAddressesResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x12$\n" +
+	"\aaddress\x18\x03 \x03(\v2\n" +
+	".AddressesR\aaddress\"@\n" +
+	"\x0eAddressesValid\x12\x18\n" +
+	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x14\n" +
+	"\x05valid\x18\x02 \x01(\bR\x05valid\"\x9d\x01\n" +
+	"\x15ValidAddressesRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12(\n" +
+	"\taddresses\x18\x04 \x03(\v2\n" +
+	".AddressesR\taddresses\"\x81\x01\n" +
+	"\x16ValidAddressesResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x124\n" +
+	"\raddress_valid\x18\x03 \x03(\v2\x0f.AddressesValidR\faddressValid\"q\n" +
+	"\x13LastestBlockRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\"u\n" +
+	"\x14LastestBlockResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x16\n" +
+	"\x06height\x18\x03 \x01(\x04R\x06height\x12\x12\n" +
+	"\x04hash\x18\x04 \x01(\tR\x04hash\"\\\n" +
+	"\vFromAddress\x12\x18\n" +
+	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x16\n" +
+	"\x06amount\x18\x02 \x01(\tR\x06amount\x12\x1b\n" +
+	"\tmeta_data\x18\x03 \x01(\tR\bmetaData\"Z\n" +
+	"\tToAddress\x12\x18\n" +
+	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x16\n" +
+	"\x06amount\x18\x02 \x01(\tR\x06amount\x12\x1b\n" +
+	"\tmeta_data\x18\x03 \x01(\tR\bmetaData\"\x92\x01\n" +
+	"\x0fTransactionList\x12\x17\n" +
+	"\atx_hash\x18\x01 \x01(\tR\x06txHash\x12\x10\n" +
+	"\x03fee\x18\x02 \x01(\tR\x03fee\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\rR\x06status\x12 \n" +
+	"\x04from\x18\x04 \x03(\v2\f.FromAddressR\x04from\x12\x1a\n" +
+	"\x02to\x18\x05 \x03(\v2\n" +
+	".ToAddressR\x02to\"\xaf\x01\n" +
+	"\fBlockRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x1f\n" +
+	"\vhash_height\x18\x04 \x01(\tR\n" +
+	"hashHeight\x12\"\n" +
+	"\ris_block_hash\x18\x05 \x01(\bR\visBlockHash\"\xa4\x01\n" +
+	"\rBlockResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x16\n" +
+	"\x06height\x18\x03 \x01(\x03R\x06height\x12\x12\n" +
+	"\x04hash\x18\x04 \x01(\tR\x04hash\x124\n" +
+	"\ftransactions\x18\x05 \x03(\v2\x10.TransactionListR\ftransactions\"\x8a\x01\n" +
+	"\x18TransactionByHashRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x12\n" +
+	"\x04hash\x18\x04 \x01(\tR\x04hash\"\x82\x01\n" +
+	"\x19TransactionByHashResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x122\n" +
+	"\vtransaction\x18\x03 \x01(\v2\x10.TransactionListR\vtransaction\"\xbe\x01\n" +
+	"\x1bTransactionByAddressRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x18\n" +
+	"\aaddress\x18\x04 \x01(\tR\aaddress\x12)\n" +
+	"\x10contract_address\x18\x05 \x01(\tR\x0fcontractAddress\"\x85\x01\n" +
+	"\x1cTransactionByAddressResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x122\n" +
+	"\vtransaction\x18\x03 \x03(\v2\x10.TransactionListR\vtransaction\"\xb8\x01\n" +
+	"\x15AccountBalanceRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x18\n" +
+	"\aaddress\x18\x04 \x01(\tR\aaddress\x12)\n" +
+	"\x10contract_address\x18\x05 \x01(\tR\x0fcontractAddress\"\x7f\n" +
+	"\x16AccountBalanceResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x18\n" +
+	"\abalance\x18\x04 \x01(\tR\abalance\"'\n" +
+	"\x0eRawTransaction\x12\x15\n" +
+	"\x06raw_tx\x18\x01 \x01(\tR\x05rawTx\"\x9d\x01\n" +
+	"\x17SendTransactionsRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12&\n" +
+	"\x06raw_tx\x18\x04 \x03(\v2\x0f.RawTransactionR\x05rawTx\"h\n" +
+	"\x14RawTransactionReturn\x12\x17\n" +
+	"\atx_hash\x18\x01 \x01(\tR\x06txHash\x12\x1d\n" +
+	"\n" +
+	"is_success\x18\x02 \x01(\bR\tisSuccess\x12\x18\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\"|\n" +
+	"\x17SendTransactionResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x12.\n" +
+	"\atxn_ret\x18\x03 \x03(\v2\x15.RawTransactionReturnR\x06txnRet\"v\n" +
+	"\x18TransactionSchemaRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\"f\n" +
+	"\x19TransactionSchemaResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x16\n" +
+	"\x06schema\x18\x03 \x01(\tR\x06schema\"0\n" +
+	"\x11Base64Transaction\x12\x1b\n" +
+	"\tbase64_tx\x18\x01 \x01(\tR\bbase64Tx\"A\n" +
+	"\x1eUnsignedTransactionMessageHash\x12\x1f\n" +
+	"\vunsigned_tx\x18\x01 \x01(\tR\n" +
+	"unsignedTx\"\xa9\x01\n" +
+	"\x18UnSignTransactionRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x121\n" +
+	"\n" +
+	"base64_txn\x18\x04 \x03(\v2\x12.Base64TransactionR\tbase64Txn\"\x92\x01\n" +
+	"\x19UnSignTransactionResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x12B\n" +
+	"\funsigned_txn\x18\x03 \x03(\v2\x1f.UnsignedTransactionMessageHashR\vunsignedTxn\"z\n" +
+	"\x1eBase64TransactionWithSignature\x12\x1b\n" +
+	"\tbase64_tx\x18\x01 \x01(\tR\bbase64Tx\x12\x1c\n" +
+	"\tsignature\x18\x02 \x01(\tR\tsignature\x12\x1d\n" +
+	"\n" +
+	"public_key\x18\x03 \x01(\tR\tpublicKey\"g\n" +
+	"\x10SignedTxWithHash\x12\x1b\n" +
+	"\tsigned_tx\x18\x01 \x01(\tR\bsignedTx\x12\x17\n" +
+	"\atx_hash\x18\x02 \x01(\tR\x06txHash\x12\x1d\n" +
+	"\n" +
+	"is_success\x18\x03 \x01(\bR\tisSuccess\"\xc5\x01\n" +
+	"\x18SignedTransactionRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12M\n" +
+	"\x12txn_with_signature\x18\x04 \x03(\v2\x1f.Base64TransactionWithSignatureR\x10txnWithSignature\"\x80\x01\n" +
+	"\x19SignedTransactionResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x120\n" +
+	"\n" +
+	"signed_txn\x18\x03 \x03(\v2\x11.SignedTxWithHashR\tsignedTxn\"/\n" +
+	"\x13ApproveContractList\x12\x18\n" +
+	"\aaddress\x18\x01 \x01(\tR\aaddress\"\x91\x01\n" +
+	"\x19AddressApproveListRequest\x12%\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
+	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x18\n" +
+	"\aaddress\x18\x04 \x01(\tR\aaddress\"\x83\x01\n" +
+	"\x1aAddressApproveListResponse\x12\x1f\n" +
+	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x03msg\x18\x02 \x01(\tR\x03msg\x122\n" +
+	"\tcontracts\x18\x03 \x03(\v2\x14.ApproveContractListR\tcontracts*$\n" +
 	"\n" +
 	"ReturnCode\x12\v\n" +
 	"\aSUCCESS\x10\x00\x12\t\n" +
@@ -367,9 +2811,21 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\n" +
 	"\x06Failed\x10\x02\x12\v\n" +
 	"\aSuccess\x10\x03\x12\t\n" +
-	"\x05Other\x10\x042\\\n" +
+	"\x05Other\x10\x042\xe4\a\n" +
 	"\x17WalletApiGateWayService\x12A\n" +
-	"\x10getSupportChains\x12\x14.SupportChainRequest\x1a\x15.SupportChainResponse\"\x00B\x17Z\x15./protobuf/wallet-apib\x06proto3"
+	"\x10getSupportChains\x12\x14.SupportChainRequest\x1a\x15.SupportChainResponse\"\x00\x12I\n" +
+	"\x10convertAddresses\x12\x18.ConvertAddressesRequest\x1a\x19.ConvertAddressesResponse\"\x00\x12C\n" +
+	"\x0evalidAddresses\x12\x16.ValidAddressesRequest\x1a\x17.ValidAddressesResponse\"\x00\x12@\n" +
+	"\x0fgetLastestBlock\x12\x14.LastestBlockRequest\x1a\x15.LastestBlockResponse\"\x00\x12+\n" +
+	"\bgetBlock\x12\r.BlockRequest\x1a\x0e.BlockResponse\"\x00\x12O\n" +
+	"\x14getTransactionByHash\x12\x19.TransactionByHashRequest\x1a\x1a.TransactionByHashResponse\"\x00\x12X\n" +
+	"\x17getTransactionByAddress\x12\x1c.TransactionByAddressRequest\x1a\x1d.TransactionByAddressResponse\"\x00\x12F\n" +
+	"\x11getAccountBalance\x12\x16.AccountBalanceRequest\x1a\x17.AccountBalanceResponse\"\x00\x12G\n" +
+	"\x0fsendTransaction\x12\x18.SendTransactionsRequest\x1a\x18.SendTransactionResponse\"\x00\x12Q\n" +
+	"\x16buildTransactionSchema\x12\x19.TransactionSchemaRequest\x1a\x1a.TransactionSchemaResponse\"\x00\x12Q\n" +
+	"\x16buildUnSignTransaction\x12\x19.UnSignTransactionRequest\x1a\x1a.UnSignTransactionResponse\"\x00\x12Q\n" +
+	"\x16buildSignedTransaction\x12\x19.SignedTransactionRequest\x1a\x1a.SignedTransactionResponse\"\x00\x12R\n" +
+	"\x15getAddressApproveList\x12\x1a.AddressApproveListRequest\x1a\x1b.AddressApproveListResponse\"\x00B\x17Z\x15./protobuf/wallet-apib\x06proto3"
 
 var (
 	file_protobuf_wallet_api_proto_rawDescOnce sync.Once
@@ -384,26 +2840,115 @@ func file_protobuf_wallet_api_proto_rawDescGZIP() []byte {
 }
 
 var file_protobuf_wallet_api_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_protobuf_wallet_api_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_protobuf_wallet_api_proto_msgTypes = make([]protoimpl.MessageInfo, 41)
 var file_protobuf_wallet_api_proto_goTypes = []any{
-	(ReturnCode)(0),              // 0: ReturnCode
-	(TxStatus)(0),                // 1: TxStatus
-	(*EndPoint)(nil),             // 2: EndPoint
-	(*SupportChain)(nil),         // 3: SupportChain
-	(*SupportChainRequest)(nil),  // 4: SupportChainRequest
-	(*SupportChainResponse)(nil), // 5: SupportChainResponse
+	(ReturnCode)(0),                        // 0: ReturnCode
+	(TxStatus)(0),                          // 1: TxStatus
+	(*EndPoint)(nil),                       // 2: EndPoint
+	(*SupportChain)(nil),                   // 3: SupportChain
+	(*SupportChainRequest)(nil),            // 4: SupportChainRequest
+	(*SupportChainResponse)(nil),           // 5: SupportChainResponse
+	(*PublicKey)(nil),                      // 6: PublicKey
+	(*Addresses)(nil),                      // 7: Addresses
+	(*ConvertAddressesRequest)(nil),        // 8: ConvertAddressesRequest
+	(*ConvertAddressesResponse)(nil),       // 9: ConvertAddressesResponse
+	(*AddressesValid)(nil),                 // 10: AddressesValid
+	(*ValidAddressesRequest)(nil),          // 11: ValidAddressesRequest
+	(*ValidAddressesResponse)(nil),         // 12: ValidAddressesResponse
+	(*LastestBlockRequest)(nil),            // 13: LastestBlockRequest
+	(*LastestBlockResponse)(nil),           // 14: LastestBlockResponse
+	(*FromAddress)(nil),                    // 15: FromAddress
+	(*ToAddress)(nil),                      // 16: ToAddress
+	(*TransactionList)(nil),                // 17: TransactionList
+	(*BlockRequest)(nil),                   // 18: BlockRequest
+	(*BlockResponse)(nil),                  // 19: BlockResponse
+	(*TransactionByHashRequest)(nil),       // 20: TransactionByHashRequest
+	(*TransactionByHashResponse)(nil),      // 21: TransactionByHashResponse
+	(*TransactionByAddressRequest)(nil),    // 22: TransactionByAddressRequest
+	(*TransactionByAddressResponse)(nil),   // 23: TransactionByAddressResponse
+	(*AccountBalanceRequest)(nil),          // 24: AccountBalanceRequest
+	(*AccountBalanceResponse)(nil),         // 25: AccountBalanceResponse
+	(*RawTransaction)(nil),                 // 26: RawTransaction
+	(*SendTransactionsRequest)(nil),        // 27: SendTransactionsRequest
+	(*RawTransactionReturn)(nil),           // 28: RawTransactionReturn
+	(*SendTransactionResponse)(nil),        // 29: SendTransactionResponse
+	(*TransactionSchemaRequest)(nil),       // 30: TransactionSchemaRequest
+	(*TransactionSchemaResponse)(nil),      // 31: TransactionSchemaResponse
+	(*Base64Transaction)(nil),              // 32: Base64Transaction
+	(*UnsignedTransactionMessageHash)(nil), // 33: UnsignedTransactionMessageHash
+	(*UnSignTransactionRequest)(nil),       // 34: UnSignTransactionRequest
+	(*UnSignTransactionResponse)(nil),      // 35: UnSignTransactionResponse
+	(*Base64TransactionWithSignature)(nil), // 36: Base64TransactionWithSignature
+	(*SignedTxWithHash)(nil),               // 37: SignedTxWithHash
+	(*SignedTransactionRequest)(nil),       // 38: SignedTransactionRequest
+	(*SignedTransactionResponse)(nil),      // 39: SignedTransactionResponse
+	(*ApproveContractList)(nil),            // 40: ApproveContractList
+	(*AddressApproveListRequest)(nil),      // 41: AddressApproveListRequest
+	(*AddressApproveListResponse)(nil),     // 42: AddressApproveListResponse
 }
 var file_protobuf_wallet_api_proto_depIdxs = []int32{
-	2, // 0: SupportChain.end_point:type_name -> EndPoint
-	0, // 1: SupportChainResponse.code:type_name -> ReturnCode
-	3, // 2: SupportChainResponse.chains:type_name -> SupportChain
-	4, // 3: WalletApiGateWayService.getSupportChains:input_type -> SupportChainRequest
-	5, // 4: WalletApiGateWayService.getSupportChains:output_type -> SupportChainResponse
-	4, // [4:5] is the sub-list for method output_type
-	3, // [3:4] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	2,  // 0: SupportChain.end_point:type_name -> EndPoint
+	0,  // 1: SupportChainResponse.code:type_name -> ReturnCode
+	3,  // 2: SupportChainResponse.chains:type_name -> SupportChain
+	6,  // 3: ConvertAddressesRequest.public_key:type_name -> PublicKey
+	0,  // 4: ConvertAddressesResponse.code:type_name -> ReturnCode
+	7,  // 5: ConvertAddressesResponse.address:type_name -> Addresses
+	7,  // 6: ValidAddressesRequest.addresses:type_name -> Addresses
+	0,  // 7: ValidAddressesResponse.code:type_name -> ReturnCode
+	10, // 8: ValidAddressesResponse.address_valid:type_name -> AddressesValid
+	0,  // 9: LastestBlockResponse.code:type_name -> ReturnCode
+	15, // 10: TransactionList.from:type_name -> FromAddress
+	16, // 11: TransactionList.to:type_name -> ToAddress
+	0,  // 12: BlockResponse.code:type_name -> ReturnCode
+	17, // 13: BlockResponse.transactions:type_name -> TransactionList
+	0,  // 14: TransactionByHashResponse.code:type_name -> ReturnCode
+	17, // 15: TransactionByHashResponse.transaction:type_name -> TransactionList
+	0,  // 16: TransactionByAddressResponse.code:type_name -> ReturnCode
+	17, // 17: TransactionByAddressResponse.transaction:type_name -> TransactionList
+	0,  // 18: AccountBalanceResponse.code:type_name -> ReturnCode
+	26, // 19: SendTransactionsRequest.raw_tx:type_name -> RawTransaction
+	0,  // 20: SendTransactionResponse.code:type_name -> ReturnCode
+	28, // 21: SendTransactionResponse.txn_ret:type_name -> RawTransactionReturn
+	0,  // 22: TransactionSchemaResponse.code:type_name -> ReturnCode
+	32, // 23: UnSignTransactionRequest.base64_txn:type_name -> Base64Transaction
+	0,  // 24: UnSignTransactionResponse.code:type_name -> ReturnCode
+	33, // 25: UnSignTransactionResponse.unsigned_txn:type_name -> UnsignedTransactionMessageHash
+	36, // 26: SignedTransactionRequest.txn_with_signature:type_name -> Base64TransactionWithSignature
+	0,  // 27: SignedTransactionResponse.code:type_name -> ReturnCode
+	37, // 28: SignedTransactionResponse.signed_txn:type_name -> SignedTxWithHash
+	0,  // 29: AddressApproveListResponse.code:type_name -> ReturnCode
+	40, // 30: AddressApproveListResponse.contracts:type_name -> ApproveContractList
+	4,  // 31: WalletApiGateWayService.getSupportChains:input_type -> SupportChainRequest
+	8,  // 32: WalletApiGateWayService.convertAddresses:input_type -> ConvertAddressesRequest
+	11, // 33: WalletApiGateWayService.validAddresses:input_type -> ValidAddressesRequest
+	13, // 34: WalletApiGateWayService.getLastestBlock:input_type -> LastestBlockRequest
+	18, // 35: WalletApiGateWayService.getBlock:input_type -> BlockRequest
+	20, // 36: WalletApiGateWayService.getTransactionByHash:input_type -> TransactionByHashRequest
+	22, // 37: WalletApiGateWayService.getTransactionByAddress:input_type -> TransactionByAddressRequest
+	24, // 38: WalletApiGateWayService.getAccountBalance:input_type -> AccountBalanceRequest
+	27, // 39: WalletApiGateWayService.sendTransaction:input_type -> SendTransactionsRequest
+	30, // 40: WalletApiGateWayService.buildTransactionSchema:input_type -> TransactionSchemaRequest
+	34, // 41: WalletApiGateWayService.buildUnSignTransaction:input_type -> UnSignTransactionRequest
+	38, // 42: WalletApiGateWayService.buildSignedTransaction:input_type -> SignedTransactionRequest
+	41, // 43: WalletApiGateWayService.getAddressApproveList:input_type -> AddressApproveListRequest
+	5,  // 44: WalletApiGateWayService.getSupportChains:output_type -> SupportChainResponse
+	9,  // 45: WalletApiGateWayService.convertAddresses:output_type -> ConvertAddressesResponse
+	12, // 46: WalletApiGateWayService.validAddresses:output_type -> ValidAddressesResponse
+	14, // 47: WalletApiGateWayService.getLastestBlock:output_type -> LastestBlockResponse
+	19, // 48: WalletApiGateWayService.getBlock:output_type -> BlockResponse
+	21, // 49: WalletApiGateWayService.getTransactionByHash:output_type -> TransactionByHashResponse
+	23, // 50: WalletApiGateWayService.getTransactionByAddress:output_type -> TransactionByAddressResponse
+	25, // 51: WalletApiGateWayService.getAccountBalance:output_type -> AccountBalanceResponse
+	29, // 52: WalletApiGateWayService.sendTransaction:output_type -> SendTransactionResponse
+	31, // 53: WalletApiGateWayService.buildTransactionSchema:output_type -> TransactionSchemaResponse
+	35, // 54: WalletApiGateWayService.buildUnSignTransaction:output_type -> UnSignTransactionResponse
+	39, // 55: WalletApiGateWayService.buildSignedTransaction:output_type -> SignedTransactionResponse
+	42, // 56: WalletApiGateWayService.getAddressApproveList:output_type -> AddressApproveListResponse
+	44, // [44:57] is the sub-list for method output_type
+	31, // [31:44] is the sub-list for method input_type
+	31, // [31:31] is the sub-list for extension type_name
+	31, // [31:31] is the sub-list for extension extendee
+	0,  // [0:31] is the sub-list for field type_name
 }
 
 func init() { file_protobuf_wallet_api_proto_init() }
@@ -417,7 +2962,7 @@ func file_protobuf_wallet_api_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_protobuf_wallet_api_proto_rawDesc), len(file_protobuf_wallet_api_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   4,
+			NumMessages:   41,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

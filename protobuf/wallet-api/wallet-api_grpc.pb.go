@@ -19,14 +19,43 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	WalletApiGateWayService_GetSupportChains_FullMethodName = "/WalletApiGateWayService/getSupportChains"
+	WalletApiGateWayService_GetSupportChains_FullMethodName        = "/WalletApiGateWayService/getSupportChains"
+	WalletApiGateWayService_ConvertAddresses_FullMethodName        = "/WalletApiGateWayService/convertAddresses"
+	WalletApiGateWayService_ValidAddresses_FullMethodName          = "/WalletApiGateWayService/validAddresses"
+	WalletApiGateWayService_GetLastestBlock_FullMethodName         = "/WalletApiGateWayService/getLastestBlock"
+	WalletApiGateWayService_GetBlock_FullMethodName                = "/WalletApiGateWayService/getBlock"
+	WalletApiGateWayService_GetTransactionByHash_FullMethodName    = "/WalletApiGateWayService/getTransactionByHash"
+	WalletApiGateWayService_GetTransactionByAddress_FullMethodName = "/WalletApiGateWayService/getTransactionByAddress"
+	WalletApiGateWayService_GetAccountBalance_FullMethodName       = "/WalletApiGateWayService/getAccountBalance"
+	WalletApiGateWayService_SendTransaction_FullMethodName         = "/WalletApiGateWayService/sendTransaction"
+	WalletApiGateWayService_BuildTransactionSchema_FullMethodName  = "/WalletApiGateWayService/buildTransactionSchema"
+	WalletApiGateWayService_BuildUnSignTransaction_FullMethodName  = "/WalletApiGateWayService/buildUnSignTransaction"
+	WalletApiGateWayService_BuildSignedTransaction_FullMethodName  = "/WalletApiGateWayService/buildSignedTransaction"
+	WalletApiGateWayService_GetAddressApproveList_FullMethodName   = "/WalletApiGateWayService/getAddressApproveList"
 )
 
 // WalletApiGateWayServiceClient is the client API for WalletApiGateWayService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WalletApiGateWayServiceClient interface {
+	// 链的支持层面
 	GetSupportChains(ctx context.Context, in *SupportChainRequest, opts ...grpc.CallOption) (*SupportChainResponse, error)
+	// 地址层面的
+	ConvertAddresses(ctx context.Context, in *ConvertAddressesRequest, opts ...grpc.CallOption) (*ConvertAddressesResponse, error)
+	ValidAddresses(ctx context.Context, in *ValidAddressesRequest, opts ...grpc.CallOption) (*ValidAddressesResponse, error)
+	// 获取数据
+	GetLastestBlock(ctx context.Context, in *LastestBlockRequest, opts ...grpc.CallOption) (*LastestBlockResponse, error)
+	GetBlock(ctx context.Context, in *BlockRequest, opts ...grpc.CallOption) (*BlockResponse, error)
+	GetTransactionByHash(ctx context.Context, in *TransactionByHashRequest, opts ...grpc.CallOption) (*TransactionByHashResponse, error)
+	GetTransactionByAddress(ctx context.Context, in *TransactionByAddressRequest, opts ...grpc.CallOption) (*TransactionByAddressResponse, error)
+	GetAccountBalance(ctx context.Context, in *AccountBalanceRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error)
+	// 构建发送交易
+	SendTransaction(ctx context.Context, in *SendTransactionsRequest, opts ...grpc.CallOption) (*SendTransactionResponse, error)
+	BuildTransactionSchema(ctx context.Context, in *TransactionSchemaRequest, opts ...grpc.CallOption) (*TransactionSchemaResponse, error)
+	BuildUnSignTransaction(ctx context.Context, in *UnSignTransactionRequest, opts ...grpc.CallOption) (*UnSignTransactionResponse, error)
+	BuildSignedTransaction(ctx context.Context, in *SignedTransactionRequest, opts ...grpc.CallOption) (*SignedTransactionResponse, error)
+	// Web3 钱包扩展
+	GetAddressApproveList(ctx context.Context, in *AddressApproveListRequest, opts ...grpc.CallOption) (*AddressApproveListResponse, error)
 }
 
 type walletApiGateWayServiceClient struct {
@@ -46,11 +75,136 @@ func (c *walletApiGateWayServiceClient) GetSupportChains(ctx context.Context, in
 	return out, nil
 }
 
+func (c *walletApiGateWayServiceClient) ConvertAddresses(ctx context.Context, in *ConvertAddressesRequest, opts ...grpc.CallOption) (*ConvertAddressesResponse, error) {
+	out := new(ConvertAddressesResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_ConvertAddresses_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) ValidAddresses(ctx context.Context, in *ValidAddressesRequest, opts ...grpc.CallOption) (*ValidAddressesResponse, error) {
+	out := new(ValidAddressesResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_ValidAddresses_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) GetLastestBlock(ctx context.Context, in *LastestBlockRequest, opts ...grpc.CallOption) (*LastestBlockResponse, error) {
+	out := new(LastestBlockResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_GetLastestBlock_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) GetBlock(ctx context.Context, in *BlockRequest, opts ...grpc.CallOption) (*BlockResponse, error) {
+	out := new(BlockResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_GetBlock_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) GetTransactionByHash(ctx context.Context, in *TransactionByHashRequest, opts ...grpc.CallOption) (*TransactionByHashResponse, error) {
+	out := new(TransactionByHashResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_GetTransactionByHash_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) GetTransactionByAddress(ctx context.Context, in *TransactionByAddressRequest, opts ...grpc.CallOption) (*TransactionByAddressResponse, error) {
+	out := new(TransactionByAddressResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_GetTransactionByAddress_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) GetAccountBalance(ctx context.Context, in *AccountBalanceRequest, opts ...grpc.CallOption) (*AccountBalanceResponse, error) {
+	out := new(AccountBalanceResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_GetAccountBalance_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) SendTransaction(ctx context.Context, in *SendTransactionsRequest, opts ...grpc.CallOption) (*SendTransactionResponse, error) {
+	out := new(SendTransactionResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_SendTransaction_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) BuildTransactionSchema(ctx context.Context, in *TransactionSchemaRequest, opts ...grpc.CallOption) (*TransactionSchemaResponse, error) {
+	out := new(TransactionSchemaResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_BuildTransactionSchema_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) BuildUnSignTransaction(ctx context.Context, in *UnSignTransactionRequest, opts ...grpc.CallOption) (*UnSignTransactionResponse, error) {
+	out := new(UnSignTransactionResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_BuildUnSignTransaction_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) BuildSignedTransaction(ctx context.Context, in *SignedTransactionRequest, opts ...grpc.CallOption) (*SignedTransactionResponse, error) {
+	out := new(SignedTransactionResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_BuildSignedTransaction_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletApiGateWayServiceClient) GetAddressApproveList(ctx context.Context, in *AddressApproveListRequest, opts ...grpc.CallOption) (*AddressApproveListResponse, error) {
+	out := new(AddressApproveListResponse)
+	err := c.cc.Invoke(ctx, WalletApiGateWayService_GetAddressApproveList_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WalletApiGateWayServiceServer is the server API for WalletApiGateWayService service.
 // All implementations should embed UnimplementedWalletApiGateWayServiceServer
 // for forward compatibility
 type WalletApiGateWayServiceServer interface {
+	// 链的支持层面
 	GetSupportChains(context.Context, *SupportChainRequest) (*SupportChainResponse, error)
+	// 地址层面的
+	ConvertAddresses(context.Context, *ConvertAddressesRequest) (*ConvertAddressesResponse, error)
+	ValidAddresses(context.Context, *ValidAddressesRequest) (*ValidAddressesResponse, error)
+	// 获取数据
+	GetLastestBlock(context.Context, *LastestBlockRequest) (*LastestBlockResponse, error)
+	GetBlock(context.Context, *BlockRequest) (*BlockResponse, error)
+	GetTransactionByHash(context.Context, *TransactionByHashRequest) (*TransactionByHashResponse, error)
+	GetTransactionByAddress(context.Context, *TransactionByAddressRequest) (*TransactionByAddressResponse, error)
+	GetAccountBalance(context.Context, *AccountBalanceRequest) (*AccountBalanceResponse, error)
+	// 构建发送交易
+	SendTransaction(context.Context, *SendTransactionsRequest) (*SendTransactionResponse, error)
+	BuildTransactionSchema(context.Context, *TransactionSchemaRequest) (*TransactionSchemaResponse, error)
+	BuildUnSignTransaction(context.Context, *UnSignTransactionRequest) (*UnSignTransactionResponse, error)
+	BuildSignedTransaction(context.Context, *SignedTransactionRequest) (*SignedTransactionResponse, error)
+	// Web3 钱包扩展
+	GetAddressApproveList(context.Context, *AddressApproveListRequest) (*AddressApproveListResponse, error)
 }
 
 // UnimplementedWalletApiGateWayServiceServer should be embedded to have forward compatible implementations.
@@ -59,6 +213,42 @@ type UnimplementedWalletApiGateWayServiceServer struct {
 
 func (UnimplementedWalletApiGateWayServiceServer) GetSupportChains(context.Context, *SupportChainRequest) (*SupportChainResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSupportChains not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) ConvertAddresses(context.Context, *ConvertAddressesRequest) (*ConvertAddressesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConvertAddresses not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) ValidAddresses(context.Context, *ValidAddressesRequest) (*ValidAddressesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ValidAddresses not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) GetLastestBlock(context.Context, *LastestBlockRequest) (*LastestBlockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetLastestBlock not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) GetBlock(context.Context, *BlockRequest) (*BlockResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBlock not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) GetTransactionByHash(context.Context, *TransactionByHashRequest) (*TransactionByHashResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionByHash not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) GetTransactionByAddress(context.Context, *TransactionByAddressRequest) (*TransactionByAddressResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionByAddress not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) GetAccountBalance(context.Context, *AccountBalanceRequest) (*AccountBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccountBalance not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) SendTransaction(context.Context, *SendTransactionsRequest) (*SendTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendTransaction not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) BuildTransactionSchema(context.Context, *TransactionSchemaRequest) (*TransactionSchemaResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BuildTransactionSchema not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) BuildUnSignTransaction(context.Context, *UnSignTransactionRequest) (*UnSignTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BuildUnSignTransaction not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) BuildSignedTransaction(context.Context, *SignedTransactionRequest) (*SignedTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BuildSignedTransaction not implemented")
+}
+func (UnimplementedWalletApiGateWayServiceServer) GetAddressApproveList(context.Context, *AddressApproveListRequest) (*AddressApproveListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAddressApproveList not implemented")
 }
 
 // UnsafeWalletApiGateWayServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -90,6 +280,222 @@ func _WalletApiGateWayService_GetSupportChains_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WalletApiGateWayService_ConvertAddresses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConvertAddressesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).ConvertAddresses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_ConvertAddresses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).ConvertAddresses(ctx, req.(*ConvertAddressesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_ValidAddresses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ValidAddressesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).ValidAddresses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_ValidAddresses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).ValidAddresses(ctx, req.(*ValidAddressesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_GetLastestBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LastestBlockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).GetLastestBlock(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_GetLastestBlock_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).GetLastestBlock(ctx, req.(*LastestBlockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_GetBlock_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BlockRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).GetBlock(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_GetBlock_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).GetBlock(ctx, req.(*BlockRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_GetTransactionByHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TransactionByHashRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).GetTransactionByHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_GetTransactionByHash_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).GetTransactionByHash(ctx, req.(*TransactionByHashRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_GetTransactionByAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TransactionByAddressRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).GetTransactionByAddress(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_GetTransactionByAddress_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).GetTransactionByAddress(ctx, req.(*TransactionByAddressRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_GetAccountBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AccountBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).GetAccountBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_GetAccountBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).GetAccountBalance(ctx, req.(*AccountBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_SendTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendTransactionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).SendTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_SendTransaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).SendTransaction(ctx, req.(*SendTransactionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_BuildTransactionSchema_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TransactionSchemaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).BuildTransactionSchema(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_BuildTransactionSchema_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).BuildTransactionSchema(ctx, req.(*TransactionSchemaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_BuildUnSignTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnSignTransactionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).BuildUnSignTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_BuildUnSignTransaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).BuildUnSignTransaction(ctx, req.(*UnSignTransactionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_BuildSignedTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SignedTransactionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).BuildSignedTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_BuildSignedTransaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).BuildSignedTransaction(ctx, req.(*SignedTransactionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletApiGateWayService_GetAddressApproveList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddressApproveListRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletApiGateWayServiceServer).GetAddressApproveList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletApiGateWayService_GetAddressApproveList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletApiGateWayServiceServer).GetAddressApproveList(ctx, req.(*AddressApproveListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WalletApiGateWayService_ServiceDesc is the grpc.ServiceDesc for WalletApiGateWayService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -100,6 +506,54 @@ var WalletApiGateWayService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "getSupportChains",
 			Handler:    _WalletApiGateWayService_GetSupportChains_Handler,
+		},
+		{
+			MethodName: "convertAddresses",
+			Handler:    _WalletApiGateWayService_ConvertAddresses_Handler,
+		},
+		{
+			MethodName: "validAddresses",
+			Handler:    _WalletApiGateWayService_ValidAddresses_Handler,
+		},
+		{
+			MethodName: "getLastestBlock",
+			Handler:    _WalletApiGateWayService_GetLastestBlock_Handler,
+		},
+		{
+			MethodName: "getBlock",
+			Handler:    _WalletApiGateWayService_GetBlock_Handler,
+		},
+		{
+			MethodName: "getTransactionByHash",
+			Handler:    _WalletApiGateWayService_GetTransactionByHash_Handler,
+		},
+		{
+			MethodName: "getTransactionByAddress",
+			Handler:    _WalletApiGateWayService_GetTransactionByAddress_Handler,
+		},
+		{
+			MethodName: "getAccountBalance",
+			Handler:    _WalletApiGateWayService_GetAccountBalance_Handler,
+		},
+		{
+			MethodName: "sendTransaction",
+			Handler:    _WalletApiGateWayService_SendTransaction_Handler,
+		},
+		{
+			MethodName: "buildTransactionSchema",
+			Handler:    _WalletApiGateWayService_BuildTransactionSchema_Handler,
+		},
+		{
+			MethodName: "buildUnSignTransaction",
+			Handler:    _WalletApiGateWayService_BuildUnSignTransaction_Handler,
+		},
+		{
+			MethodName: "buildSignedTransaction",
+			Handler:    _WalletApiGateWayService_BuildSignedTransaction_Handler,
+		},
+		{
+			MethodName: "getAddressApproveList",
+			Handler:    _WalletApiGateWayService_GetAddressApproveList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
