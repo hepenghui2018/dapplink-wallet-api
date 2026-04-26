@@ -79,7 +79,7 @@ func (d *ChainDispatcher) Interceptor(ctx context.Context, req interface{}, info
 	consumerToken := req.(CommonRequest).GetConsumerToken()
 	if consumerToken != GrpcToken {
 		return CommonReply{
-			Code: wallet_api.ReturnCode_ERROR,
+			Code: wallet_api.ApiReturnCode_APIERROR,
 			Msg:  "Consumer token is not valid",
 		}, status.Error(codes.PermissionDenied, "access denied")
 	}
@@ -94,7 +94,7 @@ func (d *ChainDispatcher) preHandler(req interface{}) (resp *CommonReply) {
 	log.Debug("chain", chainId, "req", req)
 	if _, ok := d.registry[chainId]; !ok {
 		return &CommonReply{
-			Code: wallet_api.ReturnCode_ERROR,
+			Code: wallet_api.ApiReturnCode_APIERROR,
 			Msg:  config.UnsupportedOperation,
 		}
 	}
@@ -112,7 +112,7 @@ func (d *ChainDispatcher) GetSupportChains(ctx context.Context, request *wallet_
 		supportChainList = append(supportChainList, sc)
 	}
 	return &wallet_api.SupportChainResponse{
-		Code:   wallet_api.ReturnCode_SUCCESS,
+		Code:   wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:    "success",
 		Chains: supportChainList,
 	}, nil
@@ -122,7 +122,7 @@ func (d *ChainDispatcher) ConvertAddresses(ctx context.Context, request *wallet_
 	resp := d.preHandler(request)
 	if resp != nil {
 		return &wallet_api.ConvertAddressesResponse{
-			Code: wallet_api.ReturnCode_ERROR,
+			Code: wallet_api.ApiReturnCode_APIERROR,
 			Msg:  "failed to convert addresses",
 		}, nil
 	}
@@ -133,7 +133,7 @@ func (d *ChainDispatcher) ValidAddresses(ctx context.Context, request *wallet_ap
 	resp := d.preHandler(request)
 	if resp != nil {
 		return &wallet_api.ValidAddressesResponse{
-			Code: wallet_api.ReturnCode_ERROR,
+			Code: wallet_api.ApiReturnCode_APIERROR,
 			Msg:  "failed to convert addresses",
 		}, nil
 	}
@@ -144,7 +144,7 @@ func (d *ChainDispatcher) GetLastestBlock(ctx context.Context, request *wallet_a
 	resp := d.preHandler(request)
 	if resp != nil {
 		return &wallet_api.LastestBlockResponse{
-			Code: wallet_api.ReturnCode_ERROR,
+			Code: wallet_api.ApiReturnCode_APIERROR,
 			Msg:  "get lastest block failed",
 		}, nil
 	}
@@ -155,7 +155,7 @@ func (d *ChainDispatcher) GetBlock(ctx context.Context, request *wallet_api.Bloc
 	resp := d.preHandler(request)
 	if resp != nil {
 		return &wallet_api.BlockResponse{
-			Code: wallet_api.ReturnCode_ERROR,
+			Code: wallet_api.ApiReturnCode_APIERROR,
 			Msg:  "get block info failed",
 		}, nil
 	}

@@ -73,7 +73,7 @@ func (c ChainAdaptor) ConvertAddresses(ctx context.Context, req *wallet_api.Conv
 		retAddressList = append(retAddressList, addressItem)
 	}
 	return &wallet_api.ConvertAddressesResponse{
-		Code:    wallet_api.ReturnCode_SUCCESS,
+		Code:    wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:     "success",
 		Address: retAddressList,
 	}, nil
@@ -93,7 +93,7 @@ func (c ChainAdaptor) ValidAddresses(ctx context.Context, req *wallet_api.ValidA
 		retAddressesValid = append(retAddressesValid, &addressesValidItem)
 	}
 	return &wallet_api.ValidAddressesResponse{
-		Code:         wallet_api.ReturnCode_SUCCESS,
+		Code:         wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:          "success",
 		AddressValid: retAddressesValid,
 	}, nil
@@ -106,7 +106,7 @@ func (c ChainAdaptor) GetLastestBlock(ctx context.Context, req *wallet_api.Laste
 		return nil, err
 	}
 	return &wallet_api.LastestBlockResponse{
-		Code:   wallet_api.ReturnCode_SUCCESS,
+		Code:   wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:    "get lastest block success",
 		Hash:   latestBock.Hash().String(),
 		Height: latestBock.Number.Uint64(),
@@ -160,7 +160,7 @@ func (c ChainAdaptor) GetBlock(ctx context.Context, req *wallet_api.BlockRequest
 	}
 	if !isError {
 		return &wallet_api.BlockResponse{
-			Code:         wallet_api.ReturnCode_SUCCESS,
+			Code:         wallet_api.ApiReturnCode_APISUCCESS,
 			Msg:          "get block success",
 			Height:       rpcBlock.Number,
 			Hash:         rpcBlock.Hash.String(),
@@ -168,7 +168,7 @@ func (c ChainAdaptor) GetBlock(ctx context.Context, req *wallet_api.BlockRequest
 		}, nil
 	}
 	return &wallet_api.BlockResponse{
-		Code: wallet_api.ReturnCode_ERROR,
+		Code: wallet_api.ApiReturnCode_APIERROR,
 		Msg:  "get block failed",
 	}, nil
 }
@@ -182,13 +182,13 @@ func (c ChainAdaptor) GetTransactionByHash(ctx context.Context, req *wallet_api.
 	if err != nil {
 		if errors.Is(err, ethereum.NotFound) {
 			return &wallet_api.TransactionByHashResponse{
-				Code: wallet_api.ReturnCode_ERROR,
+				Code: wallet_api.ApiReturnCode_APIERROR,
 				Msg:  "Ethereum Tx NotFound",
 			}, nil
 		}
 		log.Error("get transaction error", "err", err)
 		return &wallet_api.TransactionByHashResponse{
-			Code: wallet_api.ReturnCode_ERROR,
+			Code: wallet_api.ApiReturnCode_APIERROR,
 			Msg:  "Ethereum Tx Fetch Error",
 		}, nil
 	}
@@ -196,7 +196,7 @@ func (c ChainAdaptor) GetTransactionByHash(ctx context.Context, req *wallet_api.
 	if err != nil {
 		log.Error("get transaction receipt error", "err", err)
 		return &wallet_api.TransactionByHashResponse{
-			Code: wallet_api.ReturnCode_ERROR,
+			Code: wallet_api.ApiReturnCode_APIERROR,
 			Msg:  "Get transaction receipt error",
 		}, nil
 	}
@@ -254,7 +254,7 @@ func (c ChainAdaptor) GetTransactionByHash(ctx context.Context, req *wallet_api.
 	})
 
 	return &wallet_api.TransactionByHashResponse{
-		Code: wallet_api.ReturnCode_SUCCESS,
+		Code: wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:  "get transaction success",
 		Transaction: &wallet_api.TransactionList{
 			TxHash:          tx.Hash().Hex(),
@@ -282,7 +282,7 @@ func (c ChainAdaptor) GetTransactionByAddress(ctx context.Context, req *wallet_a
 	if err != nil {
 		log.Error("get GetTxByAddress error", "err", err)
 		return &wallet_api.TransactionByAddressResponse{
-			Code:        wallet_api.ReturnCode_ERROR,
+			Code:        wallet_api.ApiReturnCode_APIERROR,
 			Msg:         "get tx list fail",
 			Transaction: nil,
 		}, err
@@ -310,7 +310,7 @@ func (c ChainAdaptor) GetTransactionByAddress(ctx context.Context, req *wallet_a
 			})
 		}
 		return &wallet_api.TransactionByAddressResponse{
-			Code:        wallet_api.ReturnCode_SUCCESS,
+			Code:        wallet_api.ApiReturnCode_APISUCCESS,
 			Msg:         "get tx list by address success",
 			Transaction: list,
 		}, nil
@@ -321,7 +321,7 @@ func (c ChainAdaptor) GetAccountBalance(ctx context.Context, req *wallet_api.Acc
 	balanceResult, err := c.ethDataClient.GetBalanceByAddress(req.ContractAddress, req.Address)
 	if err != nil {
 		return &wallet_api.AccountBalanceResponse{
-			Code:    wallet_api.ReturnCode_ERROR,
+			Code:    wallet_api.ApiReturnCode_APIERROR,
 			Msg:     "get token balance fail",
 			Balance: "0",
 		}, nil
@@ -332,7 +332,7 @@ func (c ChainAdaptor) GetAccountBalance(ctx context.Context, req *wallet_api.Acc
 		balanceStr = balanceResult.Balance.Int().String()
 	}
 	return &wallet_api.AccountBalanceResponse{
-		Code:    wallet_api.ReturnCode_ERROR,
+		Code:    wallet_api.ApiReturnCode_APIERROR,
 		Msg:     "get token balance fail",
 		Balance: balanceStr,
 	}, nil
@@ -359,7 +359,7 @@ func (c ChainAdaptor) SendTransaction(ctx context.Context, req *wallet_api.SendT
 		txListRet = append(txListRet, &txRet)
 	}
 	return &wallet_api.SendTransactionResponse{
-		Code:   wallet_api.ReturnCode_SUCCESS,
+		Code:   wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:    "send tx success",
 		TxnRet: txListRet,
 	}, nil
@@ -368,7 +368,7 @@ func (c ChainAdaptor) SendTransaction(ctx context.Context, req *wallet_api.SendT
 func (c ChainAdaptor) BuildTransactionSchema(ctx context.Context, request *wallet_api.TransactionSchemaRequest) (*wallet_api.TransactionSchemaResponse, error) {
 	eip1559TxJson := evmbase.Eip1559DynamicFeeTx{}
 	return &wallet_api.TransactionSchemaResponse{
-		Code:   wallet_api.ReturnCode_SUCCESS,
+		Code:   wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:    "build transaction schema success",
 		Schema: util.ToJSONString(eip1559TxJson),
 	}, nil
@@ -399,7 +399,7 @@ func (c ChainAdaptor) BuildUnSignTransaction(ctx context.Context, request *walle
 		unsignTxnRet = append(unsignTxnRet, &unsignTx)
 	}
 	return &wallet_api.UnSignTransactionResponse{
-		Code:        wallet_api.ReturnCode_SUCCESS,
+		Code:        wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:         "build unsign transaction success",
 		UnsignedTxn: unsignTxnRet,
 	}, nil
@@ -462,7 +462,7 @@ func (c ChainAdaptor) BuildSignedTransaction(ctx context.Context, request *walle
 	}
 
 	return &wallet_api.SignedTransactionResponse{
-		Code:      wallet_api.ReturnCode_SUCCESS,
+		Code:      wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:       "build signed transaction success",
 		SignedTxn: signedTransactionList,
 	}, nil

@@ -2,9 +2,9 @@ syntax = "proto3";
 
 option go_package = "./protobuf/wallet-api";
 
-enum ReturnCode{
-  SUCCESS = 0;
-  ERROR = 1;
+enum ApiReturnCode{
+  APISUCCESS = 0;
+  APIERROR = 1;
 }
 
 enum TxStatus {
@@ -16,7 +16,7 @@ enum TxStatus {
 }
 
 message CommonResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
 }
 
@@ -36,7 +36,7 @@ message SupportChainRequest {
 }
 
 message SupportChainResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   repeated SupportChain chains = 3;
 }
@@ -59,7 +59,7 @@ message ConvertAddressesRequest {
 }
 
 message ConvertAddressesResponse{
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   repeated Addresses address = 3;
 }
@@ -77,7 +77,7 @@ message ValidAddressesRequest {
 }
 
 message ValidAddressesResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   repeated AddressesValid address_valid = 3;
 }
@@ -89,7 +89,7 @@ message LastestBlockRequest {
 }
 
 message LastestBlockResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   uint64 height = 3;
   string hash = 4;
@@ -126,7 +126,7 @@ message BlockRequest {
 }
 
 message BlockResponse{
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   string height = 3;
   string hash = 4;
@@ -141,7 +141,7 @@ message TransactionByHashRequest{
 }
 
 message TransactionByHashResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   TransactionList transaction = 3;
 }
@@ -157,7 +157,7 @@ message TransactionByAddressRequest {
 }
 
 message TransactionByAddressResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   repeated TransactionList transaction = 3;
 }
@@ -171,7 +171,7 @@ message AccountBalanceRequest {
 }
 
 message AccountBalanceResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   string network = 3;
   string balance = 4;
@@ -195,7 +195,7 @@ message RawTransactionReturn {
 }
 
 message SendTransactionResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   repeated RawTransactionReturn txn_ret = 3;
 }
@@ -207,7 +207,7 @@ message TransactionSchemaRequest{
 }
 
 message TransactionSchemaResponse{
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   string schema = 3;
 }
@@ -228,7 +228,7 @@ message UnSignTransactionRequest {
 }
 
 message UnSignTransactionResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   repeated UnsignedTransactionMessageHash unsigned_txn = 3;
 }
@@ -253,7 +253,7 @@ message SignedTransactionRequest {
 }
 
 message SignedTransactionResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   repeated SignedTxWithHash signed_txn = 3;
 }
@@ -270,7 +270,7 @@ message AddressApproveListRequest {
 }
 
 message AddressApproveListResponse {
-  ReturnCode code = 1;
+  ApiReturnCode code = 1;
   string msg = 2;
   repeated ApproveContractList contracts = 3;
 }

@@ -117,7 +117,7 @@ func (c ChainAdaptor) ConvertAddresses(ctx context.Context, req *wallet_api.Conv
 		addressList = append(addressList, &walletAddress)
 	}
 	return &wallet_api.ConvertAddressesResponse{
-		Code:    wallet_api.ReturnCode_SUCCESS,
+		Code:    wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:     "create address success",
 		Address: addressList,
 	}, nil
@@ -136,7 +136,7 @@ func (c ChainAdaptor) ValidAddresses(ctx context.Context, req *wallet_api.ValidA
 		}
 	}
 	return &wallet_api.ValidAddressesResponse{
-		Code:         wallet_api.ReturnCode_SUCCESS,
+		Code:         wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:          "verify address success",
 		AddressValid: addressesValidList,
 	}, nil
@@ -149,7 +149,7 @@ func (c ChainAdaptor) GetLastestBlock(ctx context.Context, req *wallet_api.Laste
 		return nil, err
 	}
 	return &wallet_api.LastestBlockResponse{
-		Code:   wallet_api.ReturnCode_SUCCESS,
+		Code:   wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:    "Get lastest block success",
 		Height: uint64(blockInfo.Headers),
 	}, nil
@@ -207,7 +207,7 @@ func (c ChainAdaptor) GetBlock(ctx context.Context, req *wallet_api.BlockRequest
 		transactionList = append(transactionList, txItem)
 	}
 	return &wallet_api.BlockResponse{
-		Code:         wallet_api.ReturnCode_SUCCESS,
+		Code:         wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:          "get block by number success",
 		Height:       strconv.FormatUint(resultBlock.Height, 10),
 		Hash:         req.HashHeight,
@@ -219,7 +219,7 @@ func (c ChainAdaptor) GetTransactionByHash(ctx context.Context, req *wallet_api.
 	txInfo, err := c.thirdPartClient.GetTransactionsByHash(req.Hash)
 	if err != nil {
 		return &wallet_api.TransactionByHashResponse{
-			Code:        wallet_api.ReturnCode_ERROR,
+			Code:        wallet_api.ApiReturnCode_APIERROR,
 			Msg:         "get transaction list fail",
 			Transaction: nil,
 		}, err
@@ -243,7 +243,7 @@ func (c ChainAdaptor) GetTransactionByHash(ctx context.Context, req *wallet_api.
 		TxType: uint32(direction),
 	}
 	return &wallet_api.TransactionByHashResponse{
-		Code:        wallet_api.ReturnCode_SUCCESS,
+		Code:        wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:         "get transaction by hash success",
 		Transaction: tx,
 	}, nil
@@ -253,7 +253,7 @@ func (c ChainAdaptor) GetTransactionByAddress(ctx context.Context, req *wallet_a
 	transaction, err := c.thirdPartClient.GetTransactionsByAddress(req.Address, strconv.Itoa(int(req.Page)), strconv.Itoa(int(req.PageSize)))
 	if err != nil {
 		return &wallet_api.TransactionByAddressResponse{
-			Code:        wallet_api.ReturnCode_ERROR,
+			Code:        wallet_api.ApiReturnCode_APIERROR,
 			Msg:         "get transaction list fail",
 			Transaction: nil,
 		}, err
@@ -286,7 +286,7 @@ func (c ChainAdaptor) GetTransactionByAddress(ctx context.Context, req *wallet_a
 		txList = append(txList, tx)
 	}
 	return &wallet_api.TransactionByAddressResponse{
-		Code:        wallet_api.ReturnCode_SUCCESS,
+		Code:        wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:         "get transaction list success",
 		Transaction: txList,
 	}, nil
@@ -296,13 +296,13 @@ func (c ChainAdaptor) GetAccountBalance(ctx context.Context, req *wallet_api.Acc
 	balance, err := c.thirdPartClient.GetAccountBalance(req.Address)
 	if err != nil {
 		return &wallet_api.AccountBalanceResponse{
-			Code:    wallet_api.ReturnCode_ERROR,
+			Code:    wallet_api.ApiReturnCode_APIERROR,
 			Msg:     "get btc balance fail",
 			Balance: "0",
 		}, err
 	}
 	return &wallet_api.AccountBalanceResponse{
-		Code:    wallet_api.ReturnCode_SUCCESS,
+		Code:    wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:     "get btc balance success",
 		Balance: balance,
 	}, nil
@@ -341,7 +341,7 @@ func (c ChainAdaptor) SendTransaction(ctx context.Context, req *wallet_api.SendT
 	}
 
 	return &wallet_api.SendTransactionResponse{
-		Code:   wallet_api.ReturnCode_SUCCESS,
+		Code:   wallet_api.ApiReturnCode_APISUCCESS,
 		Msg:    "send tx success",
 		TxnRet: txRetList,
 	}, nil

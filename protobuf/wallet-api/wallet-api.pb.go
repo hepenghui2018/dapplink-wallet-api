@@ -21,49 +21,49 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type ReturnCode int32
+type ApiReturnCode int32
 
 const (
-	ReturnCode_SUCCESS ReturnCode = 0
-	ReturnCode_ERROR   ReturnCode = 1
+	ApiReturnCode_APISUCCESS ApiReturnCode = 0
+	ApiReturnCode_APIERROR   ApiReturnCode = 1
 )
 
-// Enum value maps for ReturnCode.
+// Enum value maps for ApiReturnCode.
 var (
-	ReturnCode_name = map[int32]string{
-		0: "SUCCESS",
-		1: "ERROR",
+	ApiReturnCode_name = map[int32]string{
+		0: "APISUCCESS",
+		1: "APIERROR",
 	}
-	ReturnCode_value = map[string]int32{
-		"SUCCESS": 0,
-		"ERROR":   1,
+	ApiReturnCode_value = map[string]int32{
+		"APISUCCESS": 0,
+		"APIERROR":   1,
 	}
 )
 
-func (x ReturnCode) Enum() *ReturnCode {
-	p := new(ReturnCode)
+func (x ApiReturnCode) Enum() *ApiReturnCode {
+	p := new(ApiReturnCode)
 	*p = x
 	return p
 }
 
-func (x ReturnCode) String() string {
+func (x ApiReturnCode) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (ReturnCode) Descriptor() protoreflect.EnumDescriptor {
+func (ApiReturnCode) Descriptor() protoreflect.EnumDescriptor {
 	return file_protobuf_wallet_api_proto_enumTypes[0].Descriptor()
 }
 
-func (ReturnCode) Type() protoreflect.EnumType {
+func (ApiReturnCode) Type() protoreflect.EnumType {
 	return &file_protobuf_wallet_api_proto_enumTypes[0]
 }
 
-func (x ReturnCode) Number() protoreflect.EnumNumber {
+func (x ApiReturnCode) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use ReturnCode.Descriptor instead.
-func (ReturnCode) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use ApiReturnCode.Descriptor instead.
+func (ApiReturnCode) EnumDescriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{0}
 }
 
@@ -124,7 +124,7 @@ func (TxStatus) EnumDescriptor() ([]byte, []int) {
 
 type CommonResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -160,11 +160,11 @@ func (*CommonResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CommonResponse) GetCode() ReturnCode {
+func (x *CommonResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *CommonResponse) GetMsg() string {
@@ -332,7 +332,7 @@ func (x *SupportChainRequest) GetConsumerToken() string {
 
 type SupportChainResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Chains        []*SupportChain        `protobuf:"bytes,3,rep,name=chains,proto3" json:"chains,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -369,11 +369,11 @@ func (*SupportChainResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *SupportChainResponse) GetCode() ReturnCode {
+func (x *SupportChainResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *SupportChainResponse) GetMsg() string {
@@ -564,7 +564,7 @@ func (x *ConvertAddressesRequest) GetPublicKey() []*PublicKey {
 
 type ConvertAddressesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Address       []*Addresses           `protobuf:"bytes,3,rep,name=address,proto3" json:"address,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -601,11 +601,11 @@ func (*ConvertAddressesResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ConvertAddressesResponse) GetCode() ReturnCode {
+func (x *ConvertAddressesResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *ConvertAddressesResponse) GetMsg() string {
@@ -744,7 +744,7 @@ func (x *ValidAddressesRequest) GetAddresses() []*Addresses {
 
 type ValidAddressesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	AddressValid  []*AddressesValid      `protobuf:"bytes,3,rep,name=address_valid,json=addressValid,proto3" json:"address_valid,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -781,11 +781,11 @@ func (*ValidAddressesResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *ValidAddressesResponse) GetCode() ReturnCode {
+func (x *ValidAddressesResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *ValidAddressesResponse) GetMsg() string {
@@ -864,7 +864,7 @@ func (x *LastestBlockRequest) GetNetwork() string {
 
 type LastestBlockResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Height        uint64                 `protobuf:"varint,3,opt,name=height,proto3" json:"height,omitempty"`
 	Hash          string                 `protobuf:"bytes,4,opt,name=hash,proto3" json:"hash,omitempty"`
@@ -902,11 +902,11 @@ func (*LastestBlockResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *LastestBlockResponse) GetCode() ReturnCode {
+func (x *LastestBlockResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *LastestBlockResponse) GetMsg() string {
@@ -1220,7 +1220,7 @@ func (x *BlockRequest) GetIsBlockHash() bool {
 
 type BlockResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Height        string                 `protobuf:"bytes,3,opt,name=height,proto3" json:"height,omitempty"`
 	Hash          string                 `protobuf:"bytes,4,opt,name=hash,proto3" json:"hash,omitempty"`
@@ -1259,11 +1259,11 @@ func (*BlockResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *BlockResponse) GetCode() ReturnCode {
+func (x *BlockResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *BlockResponse) GetMsg() string {
@@ -1364,7 +1364,7 @@ func (x *TransactionByHashRequest) GetHash() string {
 
 type TransactionByHashResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Transaction   *TransactionList       `protobuf:"bytes,3,opt,name=transaction,proto3" json:"transaction,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1401,11 +1401,11 @@ func (*TransactionByHashResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *TransactionByHashResponse) GetCode() ReturnCode {
+func (x *TransactionByHashResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *TransactionByHashResponse) GetMsg() string {
@@ -1516,7 +1516,7 @@ func (x *TransactionByAddressRequest) GetPageSize() uint64 {
 
 type TransactionByAddressResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Transaction   []*TransactionList     `protobuf:"bytes,3,rep,name=transaction,proto3" json:"transaction,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1553,11 +1553,11 @@ func (*TransactionByAddressResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *TransactionByAddressResponse) GetCode() ReturnCode {
+func (x *TransactionByAddressResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *TransactionByAddressResponse) GetMsg() string {
@@ -1652,7 +1652,7 @@ func (x *AccountBalanceRequest) GetContractAddress() string {
 
 type AccountBalanceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Network       string                 `protobuf:"bytes,3,opt,name=network,proto3" json:"network,omitempty"`
 	Balance       string                 `protobuf:"bytes,4,opt,name=balance,proto3" json:"balance,omitempty"`
@@ -1690,11 +1690,11 @@ func (*AccountBalanceResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{24}
 }
 
-func (x *AccountBalanceResponse) GetCode() ReturnCode {
+func (x *AccountBalanceResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *AccountBalanceResponse) GetMsg() string {
@@ -1892,7 +1892,7 @@ func (x *RawTransactionReturn) GetMessage() string {
 
 type SendTransactionResponse struct {
 	state         protoimpl.MessageState  `protogen:"open.v1"`
-	Code          ReturnCode              `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode           `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                  `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	TxnRet        []*RawTransactionReturn `protobuf:"bytes,3,rep,name=txn_ret,json=txnRet,proto3" json:"txn_ret,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1929,11 +1929,11 @@ func (*SendTransactionResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{28}
 }
 
-func (x *SendTransactionResponse) GetCode() ReturnCode {
+func (x *SendTransactionResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *SendTransactionResponse) GetMsg() string {
@@ -2012,7 +2012,7 @@ func (x *TransactionSchemaRequest) GetNetwork() string {
 
 type TransactionSchemaResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Schema        string                 `protobuf:"bytes,3,opt,name=schema,proto3" json:"schema,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -2049,11 +2049,11 @@ func (*TransactionSchemaResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{30}
 }
 
-func (x *TransactionSchemaResponse) GetCode() ReturnCode {
+func (x *TransactionSchemaResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *TransactionSchemaResponse) GetMsg() string {
@@ -2228,7 +2228,7 @@ func (x *UnSignTransactionRequest) GetBase64Txn() []*Base64Transaction {
 
 type UnSignTransactionResponse struct {
 	state         protoimpl.MessageState            `protogen:"open.v1"`
-	Code          ReturnCode                        `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode                     `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                            `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	UnsignedTxn   []*UnsignedTransactionMessageHash `protobuf:"bytes,3,rep,name=unsigned_txn,json=unsignedTxn,proto3" json:"unsigned_txn,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -2265,11 +2265,11 @@ func (*UnSignTransactionResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{34}
 }
 
-func (x *UnSignTransactionResponse) GetCode() ReturnCode {
+func (x *UnSignTransactionResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *UnSignTransactionResponse) GetMsg() string {
@@ -2476,7 +2476,7 @@ func (x *SignedTransactionRequest) GetTxnWithSignature() []*Base64TransactionWit
 
 type SignedTransactionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	SignedTxn     []*SignedTxWithHash    `protobuf:"bytes,3,rep,name=signed_txn,json=signedTxn,proto3" json:"signed_txn,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -2513,11 +2513,11 @@ func (*SignedTransactionResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{38}
 }
 
-func (x *SignedTransactionResponse) GetCode() ReturnCode {
+func (x *SignedTransactionResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *SignedTransactionResponse) GetMsg() string {
@@ -2648,7 +2648,7 @@ func (x *AddressApproveListRequest) GetAddress() string {
 
 type AddressApproveListResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          ReturnCode             `protobuf:"varint,1,opt,name=code,proto3,enum=ReturnCode" json:"code,omitempty"`
+	Code          ApiReturnCode          `protobuf:"varint,1,opt,name=code,proto3,enum=ApiReturnCode" json:"code,omitempty"`
 	Msg           string                 `protobuf:"bytes,2,opt,name=msg,proto3" json:"msg,omitempty"`
 	Contracts     []*ApproveContractList `protobuf:"bytes,3,rep,name=contracts,proto3" json:"contracts,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -2685,11 +2685,11 @@ func (*AddressApproveListResponse) Descriptor() ([]byte, []int) {
 	return file_protobuf_wallet_api_proto_rawDescGZIP(), []int{41}
 }
 
-func (x *AddressApproveListResponse) GetCode() ReturnCode {
+func (x *AddressApproveListResponse) GetCode() ApiReturnCode {
 	if x != nil {
 		return x.Code
 	}
-	return ReturnCode_SUCCESS
+	return ApiReturnCode_APISUCCESS
 }
 
 func (x *AddressApproveListResponse) GetMsg() string {
@@ -2710,9 +2710,9 @@ var File_protobuf_wallet_api_proto protoreflect.FileDescriptor
 
 const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\n" +
-	"\x19protobuf/wallet-api.proto\"C\n" +
-	"\x0eCommonResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x19protobuf/wallet-api.proto\"F\n" +
+	"\x0eCommonResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\"\x1c\n" +
 	"\bEndPoint\x12\x10\n" +
 	"\x03url\x18\x01 \x01(\tR\x03url\"\x8a\x01\n" +
@@ -2723,9 +2723,9 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x12&\n" +
 	"\tend_point\x18\x04 \x03(\v2\t.EndPointR\bendPoint\"<\n" +
 	"\x13SupportChainRequest\x12%\n" +
-	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\"p\n" +
-	"\x14SupportChainResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\"s\n" +
+	"\x14SupportChainResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12%\n" +
 	"\x06chains\x18\x03 \x03(\v2\r.SupportChainR\x06chains\"*\n" +
 	"\tPublicKey\x12\x1d\n" +
@@ -2742,9 +2742,9 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\x0eaddress_format\x18\x04 \x01(\tR\raddressFormat\x12)\n" +
 	"\n" +
 	"public_key\x18\x05 \x03(\v2\n" +
-	".PublicKeyR\tpublicKey\"s\n" +
-	"\x18ConvertAddressesResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	".PublicKeyR\tpublicKey\"v\n" +
+	"\x18ConvertAddressesResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12$\n" +
 	"\aaddress\x18\x03 \x03(\v2\n" +
 	".AddressesR\aaddress\"@\n" +
@@ -2756,17 +2756,17 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x12(\n" +
 	"\taddresses\x18\x04 \x03(\v2\n" +
-	".AddressesR\taddresses\"\x81\x01\n" +
-	"\x16ValidAddressesResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	".AddressesR\taddresses\"\x84\x01\n" +
+	"\x16ValidAddressesResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x124\n" +
 	"\raddress_valid\x18\x03 \x03(\v2\x0f.AddressesValidR\faddressValid\"q\n" +
 	"\x13LastestBlockRequest\x12%\n" +
 	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
 	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
-	"\anetwork\x18\x03 \x01(\tR\anetwork\"u\n" +
-	"\x14LastestBlockResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\"x\n" +
+	"\x14LastestBlockResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x16\n" +
 	"\x06height\x18\x03 \x01(\x04R\x06height\x12\x12\n" +
 	"\x04hash\x18\x04 \x01(\tR\x04hash\"\\\n" +
@@ -2793,9 +2793,9 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x1f\n" +
 	"\vhash_height\x18\x04 \x01(\tR\n" +
 	"hashHeight\x12\"\n" +
-	"\ris_block_hash\x18\x05 \x01(\bR\visBlockHash\"\xa4\x01\n" +
-	"\rBlockResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\ris_block_hash\x18\x05 \x01(\bR\visBlockHash\"\xa7\x01\n" +
+	"\rBlockResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x16\n" +
 	"\x06height\x18\x03 \x01(\tR\x06height\x12\x12\n" +
 	"\x04hash\x18\x04 \x01(\tR\x04hash\x124\n" +
@@ -2804,9 +2804,9 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
 	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x12\n" +
-	"\x04hash\x18\x04 \x01(\tR\x04hash\"\x82\x01\n" +
-	"\x19TransactionByHashResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x04hash\x18\x04 \x01(\tR\x04hash\"\x85\x01\n" +
+	"\x19TransactionByHashResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x122\n" +
 	"\vtransaction\x18\x03 \x01(\v2\x10.TransactionListR\vtransaction\"\xef\x01\n" +
 	"\x1bTransactionByAddressRequest\x12%\n" +
@@ -2816,9 +2816,9 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\aaddress\x18\x04 \x01(\tR\aaddress\x12)\n" +
 	"\x10contract_address\x18\x05 \x01(\tR\x0fcontractAddress\x12\x12\n" +
 	"\x04page\x18\x06 \x01(\x04R\x04page\x12\x1b\n" +
-	"\tpage_size\x18\a \x01(\x04R\bpageSize\"\x85\x01\n" +
-	"\x1cTransactionByAddressResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\tpage_size\x18\a \x01(\x04R\bpageSize\"\x88\x01\n" +
+	"\x1cTransactionByAddressResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x122\n" +
 	"\vtransaction\x18\x03 \x03(\v2\x10.TransactionListR\vtransaction\"\xb8\x01\n" +
 	"\x15AccountBalanceRequest\x12%\n" +
@@ -2826,9 +2826,9 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x18\n" +
 	"\aaddress\x18\x04 \x01(\tR\aaddress\x12)\n" +
-	"\x10contract_address\x18\x05 \x01(\tR\x0fcontractAddress\"\x7f\n" +
-	"\x16AccountBalanceResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x10contract_address\x18\x05 \x01(\tR\x0fcontractAddress\"\x82\x01\n" +
+	"\x16AccountBalanceResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x18\n" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x18\n" +
 	"\abalance\x18\x04 \x01(\tR\abalance\"'\n" +
@@ -2843,17 +2843,17 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\atx_hash\x18\x01 \x01(\tR\x06txHash\x12\x1d\n" +
 	"\n" +
 	"is_success\x18\x02 \x01(\bR\tisSuccess\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\"|\n" +
-	"\x17SendTransactionResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\"\x7f\n" +
+	"\x17SendTransactionResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12.\n" +
 	"\atxn_ret\x18\x03 \x03(\v2\x15.RawTransactionReturnR\x06txnRet\"v\n" +
 	"\x18TransactionSchemaRequest\x12%\n" +
 	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
 	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
-	"\anetwork\x18\x03 \x01(\tR\anetwork\"f\n" +
-	"\x19TransactionSchemaResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\anetwork\x18\x03 \x01(\tR\anetwork\"i\n" +
+	"\x19TransactionSchemaResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12\x16\n" +
 	"\x06schema\x18\x03 \x01(\tR\x06schema\"0\n" +
 	"\x11Base64Transaction\x12\x1b\n" +
@@ -2866,9 +2866,9 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x121\n" +
 	"\n" +
-	"base64_txn\x18\x04 \x03(\v2\x12.Base64TransactionR\tbase64Txn\"\x92\x01\n" +
-	"\x19UnSignTransactionResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"base64_txn\x18\x04 \x03(\v2\x12.Base64TransactionR\tbase64Txn\"\x95\x01\n" +
+	"\x19UnSignTransactionResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x12B\n" +
 	"\funsigned_txn\x18\x03 \x03(\v2\x1f.UnsignedTransactionMessageHashR\vunsignedTxn\"z\n" +
 	"\x1eBase64TransactionWithSignature\x12\x1b\n" +
@@ -2885,9 +2885,9 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
 	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x12M\n" +
-	"\x12txn_with_signature\x18\x04 \x03(\v2\x1f.Base64TransactionWithSignatureR\x10txnWithSignature\"\x80\x01\n" +
-	"\x19SignedTransactionResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\x12txn_with_signature\x18\x04 \x03(\v2\x1f.Base64TransactionWithSignatureR\x10txnWithSignature\"\x83\x01\n" +
+	"\x19SignedTransactionResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x120\n" +
 	"\n" +
 	"signed_txn\x18\x03 \x03(\v2\x11.SignedTxWithHashR\tsignedTxn\"/\n" +
@@ -2897,15 +2897,15 @@ const file_protobuf_wallet_api_proto_rawDesc = "" +
 	"\x0econsumer_token\x18\x01 \x01(\tR\rconsumerToken\x12\x19\n" +
 	"\bchain_id\x18\x02 \x01(\tR\achainId\x12\x18\n" +
 	"\anetwork\x18\x03 \x01(\tR\anetwork\x12\x18\n" +
-	"\aaddress\x18\x04 \x01(\tR\aaddress\"\x83\x01\n" +
-	"\x1aAddressApproveListResponse\x12\x1f\n" +
-	"\x04code\x18\x01 \x01(\x0e2\v.ReturnCodeR\x04code\x12\x10\n" +
+	"\aaddress\x18\x04 \x01(\tR\aaddress\"\x86\x01\n" +
+	"\x1aAddressApproveListResponse\x12\"\n" +
+	"\x04code\x18\x01 \x01(\x0e2\x0e.ApiReturnCodeR\x04code\x12\x10\n" +
 	"\x03msg\x18\x02 \x01(\tR\x03msg\x122\n" +
-	"\tcontracts\x18\x03 \x03(\v2\x14.ApproveContractListR\tcontracts*$\n" +
+	"\tcontracts\x18\x03 \x03(\v2\x14.ApproveContractListR\tcontracts*-\n" +
+	"\rApiReturnCode\x12\x0e\n" +
 	"\n" +
-	"ReturnCode\x12\v\n" +
-	"\aSUCCESS\x10\x00\x12\t\n" +
-	"\x05ERROR\x10\x01*I\n" +
+	"APISUCCESS\x10\x00\x12\f\n" +
+	"\bAPIERROR\x10\x01*I\n" +
 	"\bTxStatus\x12\f\n" +
 	"\bNotFound\x10\x00\x12\v\n" +
 	"\aPending\x10\x01\x12\n" +
@@ -2943,7 +2943,7 @@ func file_protobuf_wallet_api_proto_rawDescGZIP() []byte {
 var file_protobuf_wallet_api_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_protobuf_wallet_api_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_protobuf_wallet_api_proto_goTypes = []any{
-	(ReturnCode)(0),                        // 0: ReturnCode
+	(ApiReturnCode)(0),                     // 0: ApiReturnCode
 	(TxStatus)(0),                          // 1: TxStatus
 	(*CommonResponse)(nil),                 // 2: CommonResponse
 	(*EndPoint)(nil),                       // 3: EndPoint
@@ -2989,37 +2989,37 @@ var file_protobuf_wallet_api_proto_goTypes = []any{
 	(*AddressApproveListResponse)(nil),     // 43: AddressApproveListResponse
 }
 var file_protobuf_wallet_api_proto_depIdxs = []int32{
-	0,  // 0: CommonResponse.code:type_name -> ReturnCode
+	0,  // 0: CommonResponse.code:type_name -> ApiReturnCode
 	3,  // 1: SupportChain.end_point:type_name -> EndPoint
-	0,  // 2: SupportChainResponse.code:type_name -> ReturnCode
+	0,  // 2: SupportChainResponse.code:type_name -> ApiReturnCode
 	4,  // 3: SupportChainResponse.chains:type_name -> SupportChain
 	7,  // 4: ConvertAddressesRequest.public_key:type_name -> PublicKey
-	0,  // 5: ConvertAddressesResponse.code:type_name -> ReturnCode
+	0,  // 5: ConvertAddressesResponse.code:type_name -> ApiReturnCode
 	8,  // 6: ConvertAddressesResponse.address:type_name -> Addresses
 	8,  // 7: ValidAddressesRequest.addresses:type_name -> Addresses
-	0,  // 8: ValidAddressesResponse.code:type_name -> ReturnCode
+	0,  // 8: ValidAddressesResponse.code:type_name -> ApiReturnCode
 	11, // 9: ValidAddressesResponse.address_valid:type_name -> AddressesValid
-	0,  // 10: LastestBlockResponse.code:type_name -> ReturnCode
+	0,  // 10: LastestBlockResponse.code:type_name -> ApiReturnCode
 	16, // 11: TransactionList.from:type_name -> FromAddress
 	17, // 12: TransactionList.to:type_name -> ToAddress
-	0,  // 13: BlockResponse.code:type_name -> ReturnCode
+	0,  // 13: BlockResponse.code:type_name -> ApiReturnCode
 	18, // 14: BlockResponse.transactions:type_name -> TransactionList
-	0,  // 15: TransactionByHashResponse.code:type_name -> ReturnCode
+	0,  // 15: TransactionByHashResponse.code:type_name -> ApiReturnCode
 	18, // 16: TransactionByHashResponse.transaction:type_name -> TransactionList
-	0,  // 17: TransactionByAddressResponse.code:type_name -> ReturnCode
+	0,  // 17: TransactionByAddressResponse.code:type_name -> ApiReturnCode
 	18, // 18: TransactionByAddressResponse.transaction:type_name -> TransactionList
-	0,  // 19: AccountBalanceResponse.code:type_name -> ReturnCode
+	0,  // 19: AccountBalanceResponse.code:type_name -> ApiReturnCode
 	27, // 20: SendTransactionsRequest.raw_tx:type_name -> RawTransaction
-	0,  // 21: SendTransactionResponse.code:type_name -> ReturnCode
+	0,  // 21: SendTransactionResponse.code:type_name -> ApiReturnCode
 	29, // 22: SendTransactionResponse.txn_ret:type_name -> RawTransactionReturn
-	0,  // 23: TransactionSchemaResponse.code:type_name -> ReturnCode
+	0,  // 23: TransactionSchemaResponse.code:type_name -> ApiReturnCode
 	33, // 24: UnSignTransactionRequest.base64_txn:type_name -> Base64Transaction
-	0,  // 25: UnSignTransactionResponse.code:type_name -> ReturnCode
+	0,  // 25: UnSignTransactionResponse.code:type_name -> ApiReturnCode
 	34, // 26: UnSignTransactionResponse.unsigned_txn:type_name -> UnsignedTransactionMessageHash
 	37, // 27: SignedTransactionRequest.txn_with_signature:type_name -> Base64TransactionWithSignature
-	0,  // 28: SignedTransactionResponse.code:type_name -> ReturnCode
+	0,  // 28: SignedTransactionResponse.code:type_name -> ApiReturnCode
 	38, // 29: SignedTransactionResponse.signed_txn:type_name -> SignedTxWithHash
-	0,  // 30: AddressApproveListResponse.code:type_name -> ReturnCode
+	0,  // 30: AddressApproveListResponse.code:type_name -> ApiReturnCode
 	41, // 31: AddressApproveListResponse.contracts:type_name -> ApproveContractList
 	5,  // 32: WalletApiGateWayService.getSupportChains:input_type -> SupportChainRequest
 	9,  // 33: WalletApiGateWayService.convertAddresses:input_type -> ConvertAddressesRequest
