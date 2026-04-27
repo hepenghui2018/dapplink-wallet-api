@@ -32,6 +32,7 @@ type WalletNode struct {
 	Sol     Node `yaml:"solana"`
 	Base    Node `yaml:"evmbase"`
 	Polygon Node `yaml:"polygon"`
+	Tron    Node `yaml:"tron"`
 }
 
 type Chain struct {
