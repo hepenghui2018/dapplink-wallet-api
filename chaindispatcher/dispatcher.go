@@ -5,7 +5,6 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/dapplink-labs/dapplink-wallet-api/chain/polkadot"
 	"github.com/dapplink-labs/dapplink-wallet-api/chain/solana"
 	"github.com/dapplink-labs/dapplink-wallet-api/chain/tron"
 	"google.golang.org/grpc"
@@ -47,22 +46,16 @@ func NewChainDispatcher(conf *config.Config) (*ChainDispatcher, error) {
 	}
 
 	chainAdaptorFactoryMap := map[string]func(conf *config.Config) (chain.IChainAdaptor, error){
-		ethereum.ChainID:                ethereum.NewChainAdaptor,
-		bitcoin.ChainID:                 bitcoin.NewChainAdaptor,
-		solana.ChainID:                  solana.NewChainAdaptor,
-		tron.ChainID:                    tron.NewChainAdaptor,
-		polkadot.ChainIDEvm:             polkadot.NewEvmChainAdaptor(polkadot.ChainIDEvm),
-		polkadot.ChainIDSubstrate:       polkadot.NewSubstrateChainAdaptor(polkadot.ChainIDSubstrate),
-		polkadot.KusamaChainIDSubstrate: polkadot.NewSubstrateChainAdaptor(polkadot.KusamaChainIDSubstrate),
+		ethereum.ChainID: ethereum.NewChainAdaptor,
+		bitcoin.ChainID:  bitcoin.NewChainAdaptor,
+		solana.ChainID:   solana.NewChainAdaptor,
+		tron.ChainID:     tron.NewChainAdaptor,
 	}
 	supportedChains := []string{
 		ethereum.ChainID,
 		bitcoin.ChainID,
 		solana.ChainID,
 		tron.ChainID,
-		polkadot.ChainIDEvm,
-		polkadot.ChainIDSubstrate,
-		polkadot.KusamaChainIDSubstrate,
 	}
 
 	for _, c := range conf.Chains {
